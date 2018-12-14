@@ -5,19 +5,10 @@ import android.app.Application;
 import app.c.team.hackathon.di.module.AppModule;
 
 public class ComponentsHolder {
-    private static volatile ComponentsHolder instance;
+    private static volatile ComponentsHolder instance = new ComponentsHolder();
 
     public static ComponentsHolder getInstance() {
-        ComponentsHolder localInstance = instance;
-        if (localInstance == null) {
-            synchronized (ComponentsHolder.class) {
-                localInstance = instance;
-                if (localInstance == null) {
-                    instance = localInstance = new ComponentsHolder();
-                }
-            }
-        }
-        return localInstance;
+        return instance;
     }
 
     private AppComponent appComponent;

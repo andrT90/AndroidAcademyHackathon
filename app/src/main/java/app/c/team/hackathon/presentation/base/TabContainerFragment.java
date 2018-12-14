@@ -45,6 +45,14 @@ public class TabContainerFragment extends Fragment implements BackButtonListener
     }
 
     @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+        if (navigator == null)
+            navigator = new HackathonNavigator(getActivity(), getChildFragmentManager(), getTabContainerId());
+    }
+
+    @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         return inflater.inflate(R.layout.tab, container, false);
     }

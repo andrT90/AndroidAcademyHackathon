@@ -1,9 +1,11 @@
 package app.c.team.hackathon.presentation.base;
 
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.transition.Fade;
 import android.transition.TransitionManager;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -13,25 +15,40 @@ import app.c.team.hackathon.R;
 import app.c.team.hackathon.util.ViewUtil;
 import app.c.team.hackathon.view.MessageDelegate;
 import butterknife.BindView;
+import butterknife.ButterKnife;
 
-public class BaseFragment extends MvpAppCompatFragment implements BaseView {
+public abstract class BaseFragment extends MvpAppCompatFragment implements BaseView {
+    public abstract int getLayoutResId();
+
     private MessageDelegate messageDelegate;
 
     @Nullable
     @BindView(R.id.loading)
     protected View loading;
 
+    @Nullable
+    @Override
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        View view = inflater.inflate(getLayoutResId(), container, false);
+        ButterKnife.bind(this, view);
+        return view;
+    }
+
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-
         messageDelegate = new MessageDelegate(getContext());
 
     }
 
     @Override
-    public void onDestroy() {
+    public void onDestroyView() {
         messageDelegate = null;
+        super.onDestroyView();
+    }
+
+    @Override
+    public void onDestroy() {
         super.onDestroy();
     }
 

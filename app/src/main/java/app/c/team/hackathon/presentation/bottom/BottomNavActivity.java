@@ -15,23 +15,34 @@ import com.arellomobile.mvp.presenter.ProvidePresenter;
 import javax.inject.Inject;
 
 import app.c.team.hackathon.R;
+import app.c.team.hackathon.di.ComponentsHolder;
+import app.c.team.hackathon.model.navigation.HackathonNavigator;
 import app.c.team.hackathon.presentation.base.BackButtonListener;
+import app.c.team.hackathon.view.MessageDelegate;
 import butterknife.BindView;
-import ru.terrakok.cicerone.Cicerone;
+import butterknife.ButterKnife;
+import ru.terrakok.cicerone.NavigatorHolder;
 import ru.terrakok.cicerone.Router;
 import ru.terrakok.cicerone.Screen;
 
 public class BottomNavActivity extends MvpAppCompatActivity implements BottomNavView {
 
+    private HackathonNavigator navigator;
+
     @Inject
-    Cicerone<Router> ciceroneHolder;
+    NavigatorHolder navigatorHolder;
+
+    @Inject
+    Router router;
 
     @InjectPresenter
     BottomNavPresenter presenter;
 
+    private MessageDelegate messageDelegate;
+
     @ProvidePresenter
     BottomNavPresenter providePresenter() {
-        return new BottomNavPresenter(ciceroneHolder.getRouter(), null);
+        return new BottomNavPresenter(router, null);
     }
 
     @BindView(R.id.bottom_nav_view)
@@ -39,8 +50,16 @@ public class BottomNavActivity extends MvpAppCompatActivity implements BottomNav
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        ComponentsHolder.getInstance().appComponent().inject(this);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.bottom);
+
+        ButterKnife.bind(this);
+
+        messageDelegate = new MessageDelegate(this);
+
+        if (navigator == null)
+            navigator = new HackathonNavigator(this, getSupportFragmentManager(), getContainerId());
 
         bottomNavView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
@@ -61,6 +80,24 @@ public class BottomNavActivity extends MvpAppCompatActivity implements BottomNav
     }
 
     @Override
+    protected void onResume() {
+        super.onResume();
+        navigatorHolder.setNavigator(navigator);
+    }
+
+    @Override
+    protected void onPause() {
+        navigatorHolder.removeNavigator();
+        super.onPause();
+    }
+
+    @Override
+    protected void onDestroy() {
+        messageDelegate = null;
+        super.onDestroy();
+    }
+
+    @Override
     public void onBackPressed() {
         Fragment fragment = getCurrentFragment();
         if (fragment instanceof BackButtonListener) {
@@ -73,17 +110,37 @@ public class BottomNavActivity extends MvpAppCompatActivity implements BottomNav
     }
 
     @Nullable
-    private Cicerone<Router> getLocalCicerone() {
-        return ciceroneHolder;
-    }
-
-    @Nullable
     private Fragment getCurrentFragment() {
-        return getSupportFragmentManager().findFragmentById(getTabContainerId());
+        return getSupportFragmentManager().findFragmentById(getContainerId());
     }
 
     @IdRes
-    private int getTabContainerId() {
+    private int getContainerId() {
         return R.id.container;
+    }
+
+    @Override
+    public void showError(int id) {
+        messageDelegate.showError(id);
+    }
+
+    @Override
+    public void showError(String text) {
+        messageDelegate.showError(text);
+    }
+
+    @Override
+    public void showLoading(boolean show) {
+        //empty
+    }
+
+    @Override
+    public void showMessage(int id) {
+        messageDelegate.showMessage(id);
+    }
+
+    @Override
+    public void showMessage(String text) {
+        messageDelegate.showMessage(text);
     }
 }
