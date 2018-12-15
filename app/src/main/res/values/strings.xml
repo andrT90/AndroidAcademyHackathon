@@ -5,4 +5,8 @@
     <string name="bottom_mentors">Менторы</string>
     <string name="bottom_vacancies">Вакансии</string>
     <string name="bottom_profile">Профиль</string>
+
+
+    <!--Event List-->
+    <string name="event_list_title">Расписание</string>
 </resources>
