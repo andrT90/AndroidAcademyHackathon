@@ -73,6 +73,9 @@ dependencies {
 
     //Cicerone
     implementation "ru.terrakok.cicerone:cicerone:4.0.2"
+    
+    //addapterdelegate
+    implementation "com.hannesdorfmann:adapterdelegates3:3.1.0"
 
 
 }
