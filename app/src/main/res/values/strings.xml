@@ -5,7 +5,7 @@
     <string name="bottom_mentors">Менторы</string>
     <string name="bottom_vacancies">Вакансии</string>
     <string name="bottom_profile">Профиль</string>
-    <string name="enter">ВХОД/РЕГИСТРАЦИЯ</string>
+    <string name="enter">Вход/Регистрация</string>
     <string name="email">Почта</string>
-    <string name="email_validation_error">Email is invalid</string>
+    <string name="email_validation_error">Некорректный Email</string>
 </resources>

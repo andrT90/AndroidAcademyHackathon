@@ -11,7 +11,7 @@ import app.c.team.hackathon.repository.EventRepository;
 import ru.terrakok.cicerone.Router;
 
 @InjectViewState
-public class EventInfoPresenter extends BasePresenter<EventView> {
+public class EventInfoPresenter extends BasePresenter<EventInfoView> {
 
     private final Router router;
     @Inject
@@ -28,10 +28,8 @@ public class EventInfoPresenter extends BasePresenter<EventView> {
         super.onFirstViewAttach();
     }
 
-
     public void onBackPressed() {
         router.exit();
     }
-
 
 }

@@ -27,8 +27,8 @@
 
 
     <style name="Toolbar.Text">
-        <item name="layout_width">match_parent</item>
-        <item name="layout_height">match_parent</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
         <item name="android:textColor">@color/blackTransparent</item>
         <item name="android:gravity">center</item>
         <item name="android:fontFamily">@font/roboto_medium</item>
@@ -57,6 +57,26 @@
 
     <style name="Text.Bold">
         <item name="android:fontFamily">@font/roboto_bold</item>
+    </style>
+
+    <style name="Auth"/>
+
+    <style name="Auth.Input">
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textColorHint">@color/black</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:maxLines">1</item>
+        <item name="fontFamily">@font/roboto_regular</item>
+        <item name="theme">@style/Auth.InputTheme</item>
+    </style>
+    <style name="Auth.InputTheme">
+        <item name="colorAccent">@color/blue</item>
+        <item name="colorPrimary">@color/blue</item>
+        <item name="colorPrimaryDark">@color/black</item>
+        <item name="colorControlActivated">@color/blue</item>
+        <item name="colorControlHighlight">@color/blue</item>
+        <item name="colorControlNormal">@color/black</item>
+        <item name="colorButtonNormal">@color/black</item>
     </style>
 
 </resources>

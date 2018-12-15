@@ -13,14 +13,14 @@ import app.c.team.hackathon.presentation.bottom.BottomNavView;
 import app.c.team.hackathon.presentation.info.EventInfoPresenter;
 import app.c.team.hackathon.presentation.info.EventInfoView;
 
-public class EventLinksFragment extends BaseFragment implements BackButtonListener, EventInfoView {
+public class EventLinksFragment extends BaseFragment implements BackButtonListener, EventLinksView {
 
     @InjectPresenter
-    EventInfoPresenter presenter;
+    EventLinksPresenter presenter;
 
     @ProvidePresenter
-    EventInfoPresenter provideTutorialPresenter() {
-        return new EventInfoPresenter(((BottomNavView) getActivity()).getRouter());
+    EventLinksPresenter provideTutorialPresenter() {
+        return new EventLinksPresenter(((BottomNavView) getActivity()).getRouter());
     }
 
     @Override

@@ -71,15 +71,6 @@ public class LoginFragment extends BaseFragment implements BackButtonListener, L
         presenter.onTextChanged(e.toString());
     }
 
-    @Nullable
-    @Override
-    public View onCreateView(@NonNull LayoutInflater inflater,
-                             @Nullable ViewGroup container,
-                             @Nullable Bundle savedInstanceState) {
-        View fragmentMainView = inflater.inflate(R.layout.login, container);
-        return fragmentMainView;
-    }
-
     @Override
     public int getLayoutResId() {
         return R.layout.login;
