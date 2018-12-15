@@ -14,6 +14,7 @@ import app.c.team.hackathon.presentation.links.EventLinksPresenter;
 import app.c.team.hackathon.presentation.notes.EventNotesPresenter;
 import app.c.team.hackathon.presentation.login.LoginFragment;
 import app.c.team.hackathon.presentation.login.LoginPresenter;
+import app.c.team.hackathon.presentation.mentors.MentorsPresenter;
 import dagger.Component;
 
 @Component(modules = {
@@ -36,4 +37,6 @@ public interface AppComponent {
     void inject(EventLinksPresenter eventLinksPresenter);
 
     void inject(EventNotesPresenter eventNotesPresenter);
+
+    void inject(MentorsPresenter mentorsPresenter);
 }
