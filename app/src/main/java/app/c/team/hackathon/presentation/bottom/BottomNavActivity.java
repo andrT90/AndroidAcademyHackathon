@@ -61,21 +61,18 @@ public class BottomNavActivity extends MvpAppCompatActivity implements BottomNav
         if (navigator == null)
             navigator = new HackathonNavigator(this, getSupportFragmentManager(), getContainerId());
 
-        bottomNavView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
-                switch (menuItem.getItemId()) {
-                    case R.id.lectures:
-                        return true;
-                    case R.id.mentors:
-                        return true;
-                    case R.id.vacancies:
-                        return true;
-                    case R.id.profile:
-                        return true;
-                }
-                return false;
+        bottomNavView.setOnNavigationItemSelectedListener(menuItem -> {
+            switch (menuItem.getItemId()) {
+                case R.id.lectures:
+                    return true;
+                case R.id.mentors:
+                    return true;
+                case R.id.vacancies:
+                    return true;
+                case R.id.profile:
+                    return true;
             }
+            return false;
         });
     }
 
@@ -142,5 +139,10 @@ public class BottomNavActivity extends MvpAppCompatActivity implements BottomNav
     @Override
     public void showMessage(String text) {
         messageDelegate.showMessage(text);
+    }
+
+    @Override
+    public Router getRouter() {
+        return router;
     }
 }
