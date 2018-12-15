@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="DashLine">
+        <attr name="dl_color" format="reference" />
+        <attr name="dl_horizontal" format="boolean" />
+        <attr name="dl_dashLength" format="reference|dimension" />
+        <attr name="dl_dashGap" format="reference|dimension" />
+        <attr name="dl_dashStrokeWidth" format="reference|dimension" />
+    </declare-styleable>
+</resources>

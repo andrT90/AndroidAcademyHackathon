@@ -9,11 +9,6 @@
 
     <include layout="@layout/toolbar_layout" />
 
-    <View
-        android:layout_width="1dp"
-        android:layout_height="match_parent"
-        android:layout_marginStart="91dp"
-        android:background="@color/gray"/>
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/events"
