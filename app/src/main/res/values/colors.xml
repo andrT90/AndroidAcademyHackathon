@@ -12,4 +12,5 @@
     <color name="blackVeryTransparent">#de000000</color>
     <color name="blackTransparent">#99000000</color>
     <color name="yellowDark">#ffc107</color>
+    <color name="gray">#b2b2b2</color>
 </resources>
