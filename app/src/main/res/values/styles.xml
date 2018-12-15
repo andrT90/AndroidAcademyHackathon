@@ -23,10 +23,17 @@
     </style>
 
     <style name="TextAppearance" parent="TextAppearance.Widget.AppCompat.Toolbar.Title">
+    </style>
+
+
+    <style name="Toolbar.Text">
+        <item name="layout_width">match_parent</item>
+        <item name="layout_height">match_parent</item>
         <item name="android:textColor">@color/blackTransparent</item>
-        <item name="android:textAllCaps">false</item>
+        <item name="android:layout_gravity">center</item>
         <item name="android:textSize">@dimen/text_size_20sp</item>
-        <item name="android:gravity">center</item>
+        <item name="android:layout_marginStart">@dimen/dimen_48dp</item>
+        <item name="android:layout_marginLeft">@dimen/dimen_48dp</item>
     </style>
 
     <!--Shadow-->
