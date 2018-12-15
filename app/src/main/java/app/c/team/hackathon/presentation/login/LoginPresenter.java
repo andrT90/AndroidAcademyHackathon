@@ -6,9 +6,13 @@ import com.arellomobile.mvp.InjectViewState;
 
 import javax.inject.Inject;
 
+import app.c.team.hackathon.Screens;
 import app.c.team.hackathon.di.ComponentsHolder;
+import app.c.team.hackathon.model.data.Preferences;
 import app.c.team.hackathon.presentation.base.BasePresenter;
 import app.c.team.hackathon.repository.LoginRepository;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.schedulers.Schedulers;
 import ru.terrakok.cicerone.Router;
 
 @InjectViewState
@@ -18,6 +22,8 @@ public class LoginPresenter extends BasePresenter<LoginView> {
     private final Router router;
     @Inject
     LoginRepository loginRepository;
+    @Inject
+    Preferences preferences;
 
     LoginPresenter(Router router) {
         super(router, null);
@@ -30,16 +36,21 @@ public class LoginPresenter extends BasePresenter<LoginView> {
     }
 
     void onAuthPressed() {
-        if(isValidEmail(email)){
-            //TODO Server request login`
-        }
-        else {
+        if (isValidEmail(email)) {
+            addToComposite(loginRepository.login(email)
+                    .observeOn(AndroidSchedulers.mainThread())
+                    .subscribe(tokenResult -> {
+                        preferences.setToken(tokenResult.getToken());
+                        router.newRootScreen(new Screens.BottomNavScreen());
+                    }
+            ));
+        } else {
             getViewState().validationFailed();
         }
     }
 
     public void onTextChanged(String email) {
-           this.email = email;
+        this.email = email;
     }
 
     public final static boolean isValidEmail(CharSequence target) {
