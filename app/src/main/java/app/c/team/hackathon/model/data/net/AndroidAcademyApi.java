@@ -10,6 +10,6 @@ public interface AndroidAcademyApi {
     static final String SERVER = "http://aa.swapp.ga/";
 
     @POST("auth")
-    Single<String> login(@Query("email") String email);
+    Single<BaseResponse<TokenResult>> login(@Query("email") String email);
 
 }

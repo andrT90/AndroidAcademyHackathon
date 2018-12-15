@@ -4,8 +4,11 @@ import android.text.TextUtils;
 
 import com.arellomobile.mvp.InjectViewState;
 
+import javax.inject.Inject;
+
 import app.c.team.hackathon.di.ComponentsHolder;
 import app.c.team.hackathon.presentation.base.BasePresenter;
+import app.c.team.hackathon.repository.LoginRepository;
 import ru.terrakok.cicerone.Router;
 
 @InjectViewState
@@ -13,6 +16,8 @@ public class LoginPresenter extends BasePresenter<LoginView> {
 
     private String email;
     private final Router router;
+    @Inject
+    LoginRepository loginRepository;
 
     LoginPresenter(Router router) {
         super(router, null);
