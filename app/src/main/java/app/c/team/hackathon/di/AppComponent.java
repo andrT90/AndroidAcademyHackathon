@@ -8,6 +8,10 @@ import app.c.team.hackathon.di.module.NetworkModule;
 import app.c.team.hackathon.model.navigation.LocalNavigationModule;
 import app.c.team.hackathon.presentation.base.TabContainerFragment;
 import app.c.team.hackathon.presentation.bottom.BottomNavActivity;
+import app.c.team.hackathon.presentation.event.EventPresenter;
+import app.c.team.hackathon.presentation.info.EventInfoPresenter;
+import app.c.team.hackathon.presentation.links.EventLinksPresenter;
+import app.c.team.hackathon.presentation.notes.EventNotesPresenter;
 import app.c.team.hackathon.presentation.login.LoginFragment;
 import app.c.team.hackathon.presentation.login.LoginPresenter;
 import app.c.team.hackathon.presentation.mentors.MentorsPresenter;
@@ -25,6 +29,14 @@ public interface AppComponent {
     void inject(LoginFragment loginFragment);
 
     void inject(LoginPresenter loginPresenter);
+
+    void inject(EventPresenter eventPresenter);
+
+    void inject(EventInfoPresenter eventInfoPresenter);
+
+    void inject(EventLinksPresenter eventLinksPresenter);
+
+    void inject(EventNotesPresenter eventNotesPresenter);
 
     void inject(MentorsPresenter mentorsPresenter);
 }
