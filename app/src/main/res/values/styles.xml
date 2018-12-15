@@ -15,4 +15,21 @@
         <item name="android:background">@drawable/shadow_background</item>
     </style>
 
+    <!--Text-->
+    <style name="Text"/>
+
+    <style name="Text.Medium">
+        <item name="android:fontFamily">@font/roboto_medium</item>
+    </style>
+
+    <style name="Text.Regular">
+        <item name="android:fontFamily">@font/roboto_regular</item>
+    </style>
+
+    <style name="Text.Bold">
+        <item name="android:fontFamily">@font/roboto_bold</item>
+    </style>
+
+
+
 </resources>
