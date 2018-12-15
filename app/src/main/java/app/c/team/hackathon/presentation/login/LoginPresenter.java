@@ -42,7 +42,7 @@ public class LoginPresenter extends BasePresenter<LoginView> {
                     .subscribe(tokenResult -> {
                         preferences.setToken(tokenResult.getToken());
                         router.newRootScreen(new Screens.BottomNavScreen());
-                    }
+                    }, throwable -> getViewState().showError("Сорян, братан" )
             ));
         } else {
             getViewState().validationFailed();
