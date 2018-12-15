@@ -93,7 +93,7 @@ public class TabContainerFragment extends Fragment implements BackButtonListener
     }
 
     @Nullable
-    private Cicerone<Router> getLocalCicerone() {
+    public Cicerone<Router> getLocalCicerone() {
         return localCiceroneHolder.getCicerone(getContainerName());
     }
 

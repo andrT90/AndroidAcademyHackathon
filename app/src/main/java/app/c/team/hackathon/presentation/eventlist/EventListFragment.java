@@ -7,13 +7,19 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
-import java.util.Collection;
+import com.arellomobile.mvp.presenter.InjectPresenter;
+import com.arellomobile.mvp.presenter.ProvidePresenter;
+
 import java.util.List;
+
+import javax.inject.Inject;
 
 import app.c.team.hackathon.R;
 import app.c.team.hackathon.model.domain.Event;
 import app.c.team.hackathon.presentation.base.BaseFragment;
+import app.c.team.hackathon.presentation.base.TabContainerFragment;
 import butterknife.BindView;
+import ru.terrakok.cicerone.Router;
 
 public class EventListFragment extends BaseFragment implements EventListView {
 
@@ -24,6 +30,18 @@ public class EventListFragment extends BaseFragment implements EventListView {
         EventListFragment fragment = new EventListFragment();
         fragment.setArguments(args);
         return fragment;
+    }
+
+    @Inject
+    Router router;
+
+
+    @InjectPresenter
+    EventListPresenter presenter;
+
+    @ProvidePresenter
+    EventListPresenter providePresenter() {
+        return new EventListPresenter(router, ((TabContainerFragment) getParentFragment()).getLocalCicerone().getRouter());
     }
 
     @BindView(R.id.events)
