@@ -10,6 +10,7 @@ import app.c.team.hackathon.presentation.base.TabContainerFragment;
 import app.c.team.hackathon.presentation.bottom.BottomNavActivity;
 import app.c.team.hackathon.presentation.login.LoginFragment;
 import app.c.team.hackathon.presentation.login.LoginPresenter;
+import app.c.team.hackathon.presentation.mentors.MentorsPresenter;
 import dagger.Component;
 
 @Component(modules = {
@@ -24,4 +25,6 @@ public interface AppComponent {
     void inject(LoginFragment loginFragment);
 
     void inject(LoginPresenter loginPresenter);
+
+    void inject(MentorsPresenter mentorsPresenter);
 }
