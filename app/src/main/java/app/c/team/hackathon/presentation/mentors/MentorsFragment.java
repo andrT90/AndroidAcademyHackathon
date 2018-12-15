@@ -31,7 +31,7 @@ public class MentorsFragment extends BaseFragment implements BackButtonListener,
 
 
     @InjectPresenter
-    LoginPresenter presenter;
+    MentorsPresenter presenter;
 
     @Inject
     Router router;
@@ -56,18 +56,9 @@ public class MentorsFragment extends BaseFragment implements BackButtonListener,
     }
 
 
-    @Nullable
-    @Override
-    public View onCreateView(@NonNull LayoutInflater inflater,
-                             @Nullable ViewGroup container,
-                             @Nullable Bundle savedInstanceState) {
-        View fragmentMainView = inflater.inflate(R.layout.mentors, container);
-        return fragmentMainView;
-    }
-
     @Override
     public int getLayoutResId() {
-        return R.layout.login;
+        return R.layout.mentors;
     }
 
     @Override
