@@ -9,4 +9,7 @@
     <color name="greenLight">#99cc00</color>
     <color name="transparent">#00000000</color>
     <color name="grayTransparent">#38c7c7c7</color>
+    <color name="blackVeryTransparent">#de000000</color>
+    <color name="blackTransparent">#99000000</color>
+    <color name="yellowDark">#ffc107</color>
 </resources>
