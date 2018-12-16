@@ -1,5 +1,8 @@
 package app.c.team.hackathon.util;
 
+import android.content.ClipData;
+import android.content.ClipboardManager;
+import android.content.Context;
 import android.support.annotation.LayoutRes;
 import android.support.annotation.NonNull;
 import android.view.LayoutInflater;
@@ -32,5 +35,13 @@ public class ViewUtil {
 
     public static void loadImage(ImageView portrait, String imageUrl) {
         Picasso.get().load(imageUrl).into(portrait);
+    }
+
+    public static void copyToBuffer(Context context, String s) {
+        ClipboardManager clipboard = (ClipboardManager) context.getSystemService(Context.CLIPBOARD_SERVICE);
+        ClipData clip = ClipData.newPlainText("Copied Text", s);
+        if (clipboard != null) {
+            clipboard.setPrimaryClip(clip);
+        }
     }
 }
