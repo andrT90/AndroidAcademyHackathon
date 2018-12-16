@@ -2,41 +2,58 @@
 //
 //import android.app.Activity;
 //import android.support.annotation.NonNull;
+//import android.support.annotation.Nullable;
 //import android.support.v7.widget.RecyclerView;
 //import android.view.LayoutInflater;
+//import android.view.View;
+//import android.view.ViewGroup;
+//import android.widget.TextView;
 //
-//public class MentorsAdapterDelegate extends AdapterDelegate<List<MentorsPresenter>> {
+//import com.hannesdorfmann.adapterdelegates3.AdapterDelegate;
 //
-//  private LayoutInflater inflater;
+//import java.util.List;
 //
-//  public MentorsAdapterDelegate(Activity activity) {
-//    inflater = activity.getLayoutInflater();
-//  }
+//import app.c.team.hackathon.R;
+//import app.c.team.hackathon.model.domain.User;
 //
-//  @Override public boolean isForViewType(@NonNull List<Animal> items, int position) {
-//    return items.get(position) instanceof Cat;
-//  }
+//public class MentorsAdapterDelegate extends AdapterDelegate<List<User>> {
 //
-//  @NonNull @Override public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent) {
-//    return new CatViewHolder(inflater.inflate(R.layout.item_cat, parent, false));
-//  }
+//    private LayoutInflater inflater;
 //
-//  @Override public void onBindViewHolder(@NonNull List<Animal> items, int position,
-//      @NonNull RecyclerView.ViewHolder holder, @Nullable List<Object> payloads) {
-//
-//    CatViewHolder vh = (CatViewHolder) holder;
-//    Cat cat = (Cat) items.get(position);
-//
-//    vh.name.setText(cat.getName());
-//  }
-//
-//  static class CatViewHolder extends RecyclerView.ViewHolder {
-//
-//    public TextView name;
-//
-//    public CatViewHolder(View itemView) {
-//      super(itemView);
-//      name = (TextView) itemView.findViewById(R.id.name);
+//    public MentorsAdapterDelegate(Activity activity) {
+//        inflater = activity.getLayoutInflater();
 //    }
-//  }
+//
+//    @Override
+//    public boolean isForViewType(@NonNull List<User> items, int position) {
+//        return items.get(position) instanceof User;
+//    }
+//
+//    @NonNull
+//    @Override
+//    public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent) {
+//        //todo layout for viewHolder
+//        return new CatViewHolder(inflater.inflate(R.layout.item_cat, parent, false));
+//    }
+//
+//    @Override
+//    public void onBindViewHolder(@NonNull List<User> items, int position,
+//                                 @NonNull RecyclerView.ViewHolder holder,
+//                                 @Nullable List<Object> payloads) {
+//
+//        CatViewHolder vh = (CatViewHolder) holder;
+//        Cat cat = (Cat) items.get(position);
+//
+//        vh.name.setText(cat.getName());
+//    }
+//
+//    static class CatViewHolder extends RecyclerView.ViewHolder {
+//
+//        public TextView name;
+//
+//        public CatViewHolder(View itemView) {
+//            super(itemView);
+//            name = (TextView) itemView.findViewById(R.id.name);
+//        }
+//    }
 //}

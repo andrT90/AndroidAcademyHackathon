@@ -8,7 +8,7 @@ import com.google.gson.annotations.SerializedName;
 import java.util.List;
 import java.util.Objects;
 
-class User implements Parcelable {
+public class User implements Parcelable {
     @SerializedName("id")
     private int id;
     @SerializedName("name")

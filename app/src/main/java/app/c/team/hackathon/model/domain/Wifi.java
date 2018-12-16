@@ -7,7 +7,7 @@ import com.google.gson.annotations.SerializedName;
 
 import java.util.Objects;
 
-class Wifi implements Parcelable {
+public class Wifi implements Parcelable {
     @SerializedName("name")
     private String name;
 

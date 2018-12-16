@@ -7,7 +7,7 @@ import com.google.gson.annotations.SerializedName;
 
 import java.util.Objects;
 
-class EventTicket implements Parcelable {
+public class EventTicket implements Parcelable {
     @SerializedName("id")
     private int id;
 
