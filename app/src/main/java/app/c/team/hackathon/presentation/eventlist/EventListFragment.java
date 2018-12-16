@@ -18,12 +18,13 @@ import javax.inject.Inject;
 
 import app.c.team.hackathon.R;
 import app.c.team.hackathon.model.domain.Event;
+import app.c.team.hackathon.presentation.base.BackButtonListener;
 import app.c.team.hackathon.presentation.base.BaseFragment;
 import app.c.team.hackathon.presentation.base.TabContainerFragment;
 import butterknife.BindView;
 import ru.terrakok.cicerone.Router;
 
-public class EventListFragment extends BaseFragment implements EventListView {
+public class EventListFragment extends BaseFragment implements EventListView, BackButtonListener {
 
     public static EventListFragment newInstance() {
 
@@ -43,7 +44,7 @@ public class EventListFragment extends BaseFragment implements EventListView {
 
     @ProvidePresenter
     EventListPresenter providePresenter() {
-        return new EventListPresenter(router, ((TabContainerFragment) getParentFragment()).getLocalCicerone().getRouter());
+        return new EventListPresenter(router, ((TabContainerFragment) getParentFragment()).getRouter());
     }
 
     @BindView(R.id.toolbar)
@@ -85,8 +86,15 @@ public class EventListFragment extends BaseFragment implements EventListView {
         toolbar.setNavigationIcon(R.drawable.android);
     }
 
+
     @Override
     public void showData(List<Object> data) {
         adapter.setData(data);
+    }
+
+    @Override
+    public boolean onBackPressed() {
+        presenter.backClicked();
+        return true;
     }
 }
