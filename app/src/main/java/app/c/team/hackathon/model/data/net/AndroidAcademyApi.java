@@ -19,4 +19,6 @@ public interface AndroidAcademyApi {
     @GET
     Single<BaseResponse<List<Event>>> getEventList();
 
+    @GET("event")
+    Single<BaseResponse<Event>> getEvent(@Query("event_id") int id);
 }

@@ -13,13 +13,17 @@ import com.arellomobile.mvp.presenter.InjectPresenter;
 import com.arellomobile.mvp.presenter.ProvidePresenter;
 
 import app.c.team.hackathon.R;
+import app.c.team.hackathon.model.domain.Event;
 import app.c.team.hackathon.presentation.base.BackButtonListener;
 import app.c.team.hackathon.presentation.base.BaseFragment;
 import app.c.team.hackathon.presentation.bottom.BottomNavView;
+import app.c.team.hackathon.util.ViewUtil;
 import butterknife.BindView;
 
 public class EventInfoFragment extends BaseFragment implements BackButtonListener, EventInfoView {
 
+
+    private static final String KEY_EVENT = "EVENT";
     @InjectPresenter
     EventInfoPresenter presenter;
     @BindView(R.id.qr_container)
@@ -53,7 +57,7 @@ public class EventInfoFragment extends BaseFragment implements BackButtonListene
 
     @ProvidePresenter
     EventInfoPresenter provideTutorialPresenter() {
-        return new EventInfoPresenter(((BottomNavView) getActivity()).getRouter());
+        return new EventInfoPresenter(((BottomNavView) getActivity()).getRouter(), getArguments().getParcelable(KEY_EVENT));
     }
 
     @Override
@@ -62,9 +66,10 @@ public class EventInfoFragment extends BaseFragment implements BackButtonListene
     }
 
 
-    public static EventInfoFragment newInstance() {
+    public static EventInfoFragment newInstance(Event event) {
         Bundle args = new Bundle();
         EventInfoFragment fragment = new EventInfoFragment();
+        args.putParcelable(KEY_EVENT, event);
         fragment.setArguments(args);
         return fragment;
     }
@@ -86,4 +91,7 @@ public class EventInfoFragment extends BaseFragment implements BackButtonListene
     }
 
 
+    @Override
+    public void showEvent(Event event) {
+    }
 }

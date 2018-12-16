@@ -7,6 +7,7 @@ import javax.inject.Inject;
 import app.c.team.hackathon.model.data.net.ApiProvider;
 import app.c.team.hackathon.model.domain.Event;
 import io.reactivex.Single;
+import io.reactivex.disposables.Disposable;
 
 public class EventRepository {
 
@@ -19,5 +20,9 @@ public class EventRepository {
 
     public Single<List<Event>> getEventList() {
         return apiProvider.getEventList();
+    }
+
+    public Single<Event> getEvent(int id) {
+        return apiProvider.getEvent(id);
     }
 }

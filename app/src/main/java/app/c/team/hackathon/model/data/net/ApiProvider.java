@@ -26,4 +26,11 @@ public class ApiProvider {
                 .getEventList()
                 .map(BaseResponse::getData);
     }
+
+    public Single<Event> getEvent(int id) {
+        return api
+                .getEvent(id)
+                .map(BaseResponse::getData);
+
+    }
 }
