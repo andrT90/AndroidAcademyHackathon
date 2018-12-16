@@ -7,7 +7,7 @@ import com.google.gson.annotations.SerializedName;
 
 import java.util.Objects;
 
-class Location implements Parcelable {
+public class Location implements Parcelable {
     @SerializedName("title")
     private String title;
 
