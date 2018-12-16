@@ -83,7 +83,6 @@ public class EventListFragment extends BaseFragment implements EventListView, Ba
         events.setAdapter(adapter);
 
         toolbarTitle.setText(R.string.event_list_title);
-        toolbar.setNavigationIcon(R.drawable.android);
     }
 
 
