@@ -6,8 +6,10 @@ import java.util.List;
 import javax.inject.Inject;
 
 import app.c.team.hackathon.model.domain.Event;
+import app.c.team.hackathon.model.domain.ResourceLink;
 import app.c.team.hackathon.model.domain.User;
 import app.c.team.hackathon.model.domain.Vacancy;
+import app.c.team.hackathon.presentation.links.EventLinkItem;
 import app.c.team.hackathon.presentation.mentors.MentorItem;
 import app.c.team.hackathon.presentation.vacancies.VacancyItem;
 import io.reactivex.Single;
@@ -30,6 +32,18 @@ public class ApiProvider {
         return api
                 .getEventList()
                 .map(BaseResponse::getData);
+    }
+
+    public Single<List<EventLinkItem>> getEventLinkList(int eventId) {
+        return api
+                .getResourceLinkList(eventId)
+                .map(baseResponse -> {
+                    List<EventLinkItem> vacancyItems = new ArrayList<>();
+                    for (ResourceLink resourceLink : baseResponse.getData()) {
+                        vacancyItems.add(new EventLinkItem(resourceLink));
+                    }
+                    return vacancyItems;
+                });
     }
 
     public Single<List<MentorItem>> loadMentorData() {

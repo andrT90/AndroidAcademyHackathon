@@ -3,6 +3,7 @@ package app.c.team.hackathon.model.data.net;
 import java.util.List;
 
 import app.c.team.hackathon.model.domain.Event;
+import app.c.team.hackathon.model.domain.ResourceLink;
 import app.c.team.hackathon.model.domain.User;
 import app.c.team.hackathon.model.domain.Vacancy;
 import io.reactivex.Single;
@@ -20,6 +21,9 @@ public interface AndroidAcademyApi {
 
     @GET("events")
     Single<BaseResponse<List<Event>>> getEventList();
+
+    @GET("resource-links")
+    Single<BaseResponse<List<ResourceLink>>> getResourceLinkList(@Query("event_id") int eventId);
 
     @GET("mentors")
     Single<BaseResponse<List<User>>> getMentorList();
