@@ -5,6 +5,8 @@ import java.util.List;
 import javax.inject.Inject;
 
 import app.c.team.hackathon.model.domain.Event;
+import app.c.team.hackathon.model.domain.User;
+import app.c.team.hackathon.presentation.mentors.MentorItem;
 import io.reactivex.Single;
 
 public class ApiProvider {
@@ -26,6 +28,12 @@ public class ApiProvider {
                 .getEventList()
                 .map(BaseResponse::getData);
     }
+
+//    public Single<List<MentorItem>> loadMentorData() {
+//        return api
+//                .getMentorList()
+//                .map();
+//    }
 
     public Single<Event> getEvent(int id) {
         return api
