@@ -12,6 +12,7 @@ import javax.inject.Inject;
 import app.c.team.hackathon.di.ComponentsHolder;
 import app.c.team.hackathon.presentation.base.BasePresenter;
 import app.c.team.hackathon.repository.MentorRepository;
+import io.reactivex.android.schedulers.AndroidSchedulers;
 import ru.terrakok.cicerone.Router;
 
 @InjectViewState
@@ -44,6 +45,7 @@ public class MentorListPresenter extends BasePresenter<MentorListView> {
 
     private void loadData() {
         addToComposite(mentorRepository.loadData()
+                .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(
                         mentorItems -> {
                             mentorItemList = mentorItems;

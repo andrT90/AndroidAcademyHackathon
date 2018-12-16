@@ -9,6 +9,7 @@ import app.c.team.hackathon.presentation.bottom.BottomNavActivity;
 import app.c.team.hackathon.presentation.event.EventFragment;
 import app.c.team.hackathon.presentation.eventlist.EventListFragment;
 import app.c.team.hackathon.presentation.login.LoginActivity;
+import app.c.team.hackathon.presentation.mentors.MentorListFragment;
 import ru.terrakok.cicerone.android.support.SupportAppScreen;
 
 public class Screens {
@@ -44,6 +45,7 @@ public class Screens {
         @Override
         public Fragment getFragment() {
             return EventFragment.newInstance(event);
+//            return MentorListFragment.newInstance();
         }
     }
 

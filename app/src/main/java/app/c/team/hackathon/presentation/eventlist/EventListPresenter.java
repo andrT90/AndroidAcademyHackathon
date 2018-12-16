@@ -55,7 +55,7 @@ public class EventListPresenter extends BasePresenter<EventListView> {
     }
 
     public void eventClicked(Event event) {
-        if (localRouter != null) localRouter.replaceScreen(new Screens.EventScreen(event));
+        if (localRouter != null) localRouter.navigateTo(new Screens.EventScreen(event));
     }
 
     public void locationClicked() {

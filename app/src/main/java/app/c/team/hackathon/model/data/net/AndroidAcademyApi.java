@@ -21,8 +21,9 @@ public interface AndroidAcademyApi {
     Single<BaseResponse<List<Event>>> getEventList();
 
     @GET("mentors")
-    Single<List<User>> getMentorList();
+    Single<BaseResponse<List<User>>> getMentorList();
 
     @GET("event")
     Single<BaseResponse<Event>> getEvent(@Query("event_id") int id);
+
 }
