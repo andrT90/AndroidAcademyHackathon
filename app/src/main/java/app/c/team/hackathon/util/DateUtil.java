@@ -17,7 +17,7 @@ public class DateUtil {
      * @param time время в секундах
      * @return месяц
      */
-    public static String getMonth(int time) {
+    public static String getMonth(long time) {
         return new SimpleDateFormat("MMMM", Locale.getDefault()).format(new Date(time * 1000));
     }
 
@@ -27,7 +27,7 @@ public class DateUtil {
      * @param time время в секундах
      * @return день
      */
-    public static String getDayOfMonth(int time) {
+    public static String getDayOfMonth(long time) {
         return new SimpleDateFormat("dd", Locale.getDefault()).format(new Date(time * 1000));
     }
 
@@ -37,16 +37,16 @@ public class DateUtil {
      * @param time время в секундах
      * @return вреся в формате HH:mm
      */
-    public static String getTime(int time) {
+    public static String getTime(long time) {
         return new SimpleDateFormat("HH:mm", Locale.getDefault()).format(new Date(time * 1000));
     }
 
-    public static String getDate(int time) {
+    public static String getDate(long time) {
         return new SimpleDateFormat("dd MMMM yyyy", Locale.getDefault()).format(new Date(time * 1000));
     }
 
 
-    public static int compareToNow(int time) {
+    public static int compareToNow(long time) {
         return Calendar.getInstance().getTime().compareTo(new Date(time * 1000));
     }
 }

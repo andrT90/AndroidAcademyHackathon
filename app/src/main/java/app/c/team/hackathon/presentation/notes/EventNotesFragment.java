@@ -2,6 +2,7 @@ package app.c.team.hackathon.presentation.notes;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.widget.ImageView;
 
 import com.arellomobile.mvp.presenter.InjectPresenter;
 import com.arellomobile.mvp.presenter.ProvidePresenter;
@@ -12,11 +13,15 @@ import app.c.team.hackathon.presentation.base.BaseFragment;
 import app.c.team.hackathon.presentation.bottom.BottomNavView;
 import app.c.team.hackathon.presentation.info.EventInfoPresenter;
 import app.c.team.hackathon.presentation.info.EventInfoView;
+import app.c.team.hackathon.util.ViewUtil;
+import butterknife.BindView;
 
 public class EventNotesFragment extends BaseFragment implements BackButtonListener, EventNotesView {
 
     @InjectPresenter
     EventNotesPresenter presenter;
+    @BindView(R.id.img)
+    ImageView imageView;
 
     @ProvidePresenter
     EventNotesPresenter provideTutorialPresenter() {
@@ -46,7 +51,6 @@ public class EventNotesFragment extends BaseFragment implements BackButtonListen
 
 
     private void initViews() {
-
     }
 
     @Override

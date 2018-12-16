@@ -100,7 +100,6 @@ public class ResourceLink implements Parcelable {
 
     @Override
     public int hashCode() {
-
         return Objects.hash(id, title, link, type);
     }
 

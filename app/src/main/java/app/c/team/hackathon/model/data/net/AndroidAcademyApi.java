@@ -4,6 +4,7 @@ import java.util.List;
 
 import app.c.team.hackathon.model.domain.Event;
 import app.c.team.hackathon.model.domain.User;
+import app.c.team.hackathon.model.domain.Vacancy;
 import io.reactivex.Single;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
@@ -22,6 +23,9 @@ public interface AndroidAcademyApi {
 
     @GET("mentors")
     Single<BaseResponse<List<User>>> getMentorList();
+
+    @GET("vacancies")
+    Single<BaseResponse<List<Vacancy>>> getVacancyList();
 
     @GET("event")
     Single<BaseResponse<Event>> getEvent(@Query("event_id") int id);

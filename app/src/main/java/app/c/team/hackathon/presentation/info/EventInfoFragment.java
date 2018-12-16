@@ -1,22 +1,27 @@
 package app.c.team.hackathon.presentation.info;
 
+import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.provider.CalendarContract;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.Snackbar;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toolbar;
 
 import com.arellomobile.mvp.presenter.InjectPresenter;
 import com.arellomobile.mvp.presenter.ProvidePresenter;
 
 import app.c.team.hackathon.R;
 import app.c.team.hackathon.model.domain.Event;
+import app.c.team.hackathon.model.domain.EventTicket;
 import app.c.team.hackathon.presentation.base.BackButtonListener;
 import app.c.team.hackathon.presentation.base.BaseFragment;
 import app.c.team.hackathon.presentation.bottom.BottomNavView;
@@ -144,7 +149,7 @@ public class EventInfoFragment extends BaseFragment implements BackButtonListene
 
         // description
         if (event.getDescription() != null) {
-            description.setText(event.getMentor().getName());
+            description.setText(event.getDescription());
             description.setVisibility(View.VISIBLE);
         } else {
             description.setVisibility(View.GONE);
@@ -154,7 +159,7 @@ public class EventInfoFragment extends BaseFragment implements BackButtonListene
         if (event.getLocation() != null && event.getLocation().getTitle() != null) {
             location.setText(event.getLocation().getTitle());
             location.setOnClickListener(view -> {
-                // todo open map
+                ViewUtil.geoIntent(getContext(), event.getLocation().getLatitude(), event.getLocation().getLongitude());
             });
             location.setVisibility(View.VISIBLE);
         } else {
@@ -212,9 +217,22 @@ public class EventInfoFragment extends BaseFragment implements BackButtonListene
 
         // register button
         if (!event.isRegistered() && System.currentTimeMillis() > (event.getStartDate() * 1000)) {
+            fab.show();
             fab.setOnClickListener(view -> {
-                // todo register dialog
+                LayoutInflater factory = LayoutInflater.from(getActivity());
+                final View deleteDialogView = factory.inflate(R.layout.mylayout, null);
+                final AlertDialog deleteDialog = new AlertDialog.Builder(getActivity()).create();
+                deleteDialog.setView(deleteDialogView);
+                deleteDialogView.findViewById(R.id.reg).setOnClickListener(v -> {
+                    Snackbar.make(view, "Вы успешно зарегистрированы", Snackbar.LENGTH_LONG).show();
+                    event.setEventTicket(new EventTicket(0, null, event, true, false));
+                    showEvent(event);
+                    deleteDialog.dismiss();
+                });
+                deleteDialog.show();
             });
+        }else {
+            fab.hide();
         }
     }
 }

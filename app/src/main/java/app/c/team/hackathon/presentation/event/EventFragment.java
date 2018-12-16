@@ -7,6 +7,8 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.support.v7.widget.Toolbar;
+import android.widget.TextView;
 
 import com.arellomobile.mvp.presenter.InjectPresenter;
 import com.arellomobile.mvp.presenter.ProvidePresenter;
@@ -16,7 +18,6 @@ import app.c.team.hackathon.model.domain.Event;
 import app.c.team.hackathon.presentation.base.BackButtonListener;
 import app.c.team.hackathon.presentation.base.BaseFragment;
 import app.c.team.hackathon.presentation.base.TabContainerFragment;
-import app.c.team.hackathon.presentation.bottom.BottomNavView;
 import app.c.team.hackathon.presentation.info.EventInfoFragment;
 import app.c.team.hackathon.presentation.links.EventLinksFragment;
 import app.c.team.hackathon.presentation.notes.EventNotesFragment;
@@ -31,6 +32,10 @@ public class EventFragment extends BaseFragment implements BackButtonListener, E
     TabLayout tabLayout;
     @BindView(R.id.view_pager)
     ViewPager viewPager;
+    @BindView(R.id.toolbar)
+    Toolbar toolbar;
+    @BindView(R.id.toolbar_title)
+    TextView toolbarTitle;
     private EventPagerAdapter pagerAdapter;
     private Event event;
 
@@ -62,6 +67,9 @@ public class EventFragment extends BaseFragment implements BackButtonListener, E
 
     private void initViews() {
         event = getArguments().getParcelable(KEY_EVENT);
+        toolbar.setNavigationIcon(R.drawable.arrow_back_black);
+        toolbarTitle.setText("Лекция");
+        toolbar.setNavigationOnClickListener(view -> presenter.backClicked());
         pagerAdapter = new EventPagerAdapter(getChildFragmentManager());
         viewPager.setAdapter(pagerAdapter);
         tabLayout.setupWithViewPager(viewPager);

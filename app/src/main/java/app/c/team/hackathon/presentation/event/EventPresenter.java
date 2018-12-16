@@ -32,7 +32,7 @@ public class EventPresenter extends BasePresenter<EventView> {
 
 
     public void onBackPressed() {
-        router.exit();
+        backClicked();
     }
 
 
