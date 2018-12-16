@@ -31,12 +31,11 @@ public class EventFragment extends BaseFragment implements BackButtonListener, E
     @BindView(R.id.view_pager)
     ViewPager viewPager;
     private EventPagerAdapter pagerAdapter;
+    private Event event;
 
-    Event event = new Event(0, null, 0 , null, 0,
-            0 , null, null,null, null);
     @ProvidePresenter
     EventPresenter provideTutorialPresenter() {
-        return new EventPresenter(((BottomNavView) getActivity()).getRouter(), event);
+        return new EventPresenter(((BottomNavView) getActivity()).getRouter(), getArguments().getParcelable(KEY_EVENT));
     }
 
     @Override
@@ -61,8 +60,10 @@ public class EventFragment extends BaseFragment implements BackButtonListener, E
     }
 
     private void initViews() {
+        event = getArguments().getParcelable(KEY_EVENT);
         pagerAdapter = new EventPagerAdapter(getChildFragmentManager());
         viewPager.setAdapter(pagerAdapter);
+        tabLayout.setupWithViewPager(viewPager);
     }
 
     @Override
@@ -74,6 +75,20 @@ public class EventFragment extends BaseFragment implements BackButtonListener, E
 
         public EventPagerAdapter(FragmentManager fm) {
             super(fm);
+        }
+
+        @Override
+        public CharSequence getPageTitle(int position) {
+            switch (position) {
+                case 0:
+                    return "ИНФО";
+                case 1:
+                    return "РЕСУРСЫ";
+                case 2:
+                    return "ЗАМЕТКИ";
+                default:
+                    return "";
+            }
         }
 
         @Override
