@@ -18,7 +18,6 @@ import app.c.team.hackathon.model.domain.Event;
 import app.c.team.hackathon.presentation.base.BackButtonListener;
 import app.c.team.hackathon.presentation.base.BaseFragment;
 import app.c.team.hackathon.presentation.base.TabContainerFragment;
-import app.c.team.hackathon.presentation.bottom.BottomNavView;
 import app.c.team.hackathon.presentation.info.EventInfoFragment;
 import app.c.team.hackathon.presentation.links.EventLinksFragment;
 import app.c.team.hackathon.presentation.notes.EventNotesFragment;

@@ -1,11 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
+<FrameLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
+    android:background="#EFEFEF"
     android:layout_height="match_parent">
-    <TextView
+    <ImageView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="заметки"
+        android:background="#EFEFEF"
+        android:id="@+id/img"
+        android:scaleType="fitXY"
+        android:layout_gravity="bottom"
+        android:src="@drawable/notes3"
         />
-</android.support.constraint.ConstraintLayout>
+</FrameLayout>
