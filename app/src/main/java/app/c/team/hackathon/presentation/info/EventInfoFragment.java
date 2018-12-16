@@ -11,6 +11,7 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toolbar;
 
 import com.arellomobile.mvp.presenter.InjectPresenter;
 import com.arellomobile.mvp.presenter.ProvidePresenter;
@@ -144,7 +145,7 @@ public class EventInfoFragment extends BaseFragment implements BackButtonListene
 
         // description
         if (event.getDescription() != null) {
-            description.setText(event.getMentor().getName());
+            description.setText(event.getDescription());
             description.setVisibility(View.VISIBLE);
         } else {
             description.setVisibility(View.GONE);

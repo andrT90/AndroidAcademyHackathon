@@ -5,13 +5,32 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <include layout="@layout/toolbar_layout"
-             android:id="@+id/toolbar"/>
-
-    <android.support.design.widget.TabLayout
-        android:id="@+id/tab_layout"
+    <android.support.design.widget.AppBarLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content">
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/toolbar"
+                style="@style/Toolbar.WithoutBack" />
+
+            <TextView
+                android:id="@+id/toolbar_title"
+                style="@style/Toolbar.Text"
+                tools:text="Заголовок экрана" />
+        </FrameLayout>
+        <android.support.design.widget.TabLayout
+            android:id="@+id/tab_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+    </android.support.design.widget.AppBarLayout>
+
+
 
     <android.support.v4.view.ViewPager
         android:id="@+id/view_pager"

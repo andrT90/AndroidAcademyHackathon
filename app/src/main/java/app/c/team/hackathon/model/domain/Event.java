@@ -22,10 +22,10 @@ public class Event implements Parcelable {
     private User mentor;
 
     @SerializedName("startDate")
-    private int startDate;
+    private long startDate;
 
     @SerializedName("endDate")
-    private int endDate;
+    private long endDate;
 
     @SerializedName("description")
     private String description;
@@ -47,8 +47,8 @@ public class Event implements Parcelable {
         title = in.readString();
         number = in.readInt();
         mentor = in.readParcelable(User.class.getClassLoader());
-        startDate = in.readInt();
-        endDate = in.readInt();
+        startDate = in.readLong();
+        endDate = in.readLong();
         description = in.readString();
         resources_links = in.createTypedArrayList(ResourceLink.CREATOR);
         location = in.readParcelable(Location.class.getClassLoader());
@@ -62,8 +62,8 @@ public class Event implements Parcelable {
         dest.writeString(title);
         dest.writeInt(number);
         dest.writeParcelable(mentor, flags);
-        dest.writeInt(startDate);
-        dest.writeInt(endDate);
+        dest.writeLong(startDate);
+        dest.writeLong(endDate);
         dest.writeString(description);
         dest.writeTypedList(resources_links);
         dest.writeParcelable(location, flags);
@@ -127,7 +127,7 @@ public class Event implements Parcelable {
                 '}';
     }
 
-    public Event(int id, String title, int number, User mentor, int startDate, int endDate, String description, List<ResourceLink> resources_links, Location location, List<String> notes) {
+    public Event(int id, String title, int number, User mentor, long startDate, long endDate, String description, List<ResourceLink> resources_links, Location location, List<String> notes) {
         this.id = id;
         this.title = title;
         this.number = number;
@@ -172,7 +172,7 @@ public class Event implements Parcelable {
         this.mentor = mentor;
     }
 
-    public int getStartDate() {
+    public long getStartDate() {
         return startDate;
     }
 
@@ -180,7 +180,7 @@ public class Event implements Parcelable {
         this.startDate = startDate;
     }
 
-    public int getEndDate() {
+    public long getEndDate() {
         return endDate;
     }
 
