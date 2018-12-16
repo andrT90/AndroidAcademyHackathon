@@ -7,11 +7,12 @@ import app.c.team.hackathon.presentation.base.BasePresenter;
 import ru.terrakok.cicerone.Router;
 
 @InjectViewState
-public class MentorsPresenter extends BasePresenter<MentorsView> {
+public class MentorListPresenter extends BasePresenter<MentorListView> {
+
 
     private final Router router;
 
-    MentorsPresenter(Router router) {
+    MentorListPresenter(Router router) {
         super(router, null);
         ComponentsHolder.getInstance().appComponent().inject(this);
         this.router = router;
@@ -22,5 +23,13 @@ public class MentorsPresenter extends BasePresenter<MentorsView> {
         router.exit();
     }
 
+    @Override
+    protected void onFirstViewAttach() {
+        super.onFirstViewAttach();
+        loadData();
+    }
 
+    private void loadData() {
+
+    }
 }
