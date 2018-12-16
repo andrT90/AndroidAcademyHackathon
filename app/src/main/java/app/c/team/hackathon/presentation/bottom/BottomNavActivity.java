@@ -50,11 +50,6 @@ public class BottomNavActivity extends MvpAppCompatActivity implements BottomNav
     @BindView(R.id.bottom_nav_view)
     protected BottomNavigationView bottomNavView;
 
-    private Fragment eventsTab = TabContainerFragment.newInstance(TabContainerFragment.EVENTS);
-    private Fragment vacanciesTab = TabContainerFragment.newInstance(TabContainerFragment.VACANCIES);
-    private Fragment mentorsTab = TabContainerFragment.newInstance(TabContainerFragment.MENTORS);
-    private Fragment profileTab = TabContainerFragment.newInstance(TabContainerFragment.PROFILE);
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         ComponentsHolder.getInstance().appComponent().inject(this);
@@ -147,15 +142,15 @@ public class BottomNavActivity extends MvpAppCompatActivity implements BottomNav
     public Fragment getTabByScreenName(String screen) {
         switch (screen) {
             case TabContainerFragment.EVENTS:
-                return eventsTab;
+                return TabContainerFragment.newInstance(TabContainerFragment.EVENTS);
             case TabContainerFragment.VACANCIES:
-                return vacanciesTab;
+                return TabContainerFragment.newInstance(TabContainerFragment.VACANCIES);
             case TabContainerFragment.MENTORS:
-                return mentorsTab;
+                return TabContainerFragment.newInstance(TabContainerFragment.MENTORS);
             case TabContainerFragment.PROFILE:
-                return profileTab;
+                return TabContainerFragment.newInstance(TabContainerFragment.PROFILE);
         }
-        return eventsTab;
+        return TabContainerFragment.newInstance(TabContainerFragment.EVENTS);
     }
 
     @Nullable
