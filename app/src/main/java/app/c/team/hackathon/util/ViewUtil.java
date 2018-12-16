@@ -6,6 +6,7 @@ import android.content.ClipboardManager;
 import android.content.Context;
 import android.support.annotation.LayoutRes;
 import android.support.annotation.NonNull;
+import android.support.design.widget.Snackbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -43,11 +44,12 @@ public class ViewUtil {
         textView.setCompoundDrawablesRelativeWithIntrinsicBounds(id, 0, 0, 0);
     }
 
-    public static void copyToBuffer(Context context, String s) {
+    public static void copyToBuffer(View view, Context context, String s) {
         ClipboardManager clipboard = (ClipboardManager) context.getSystemService(Context.CLIPBOARD_SERVICE);
         ClipData clip = ClipData.newPlainText("Copied Text", s);
         if (clipboard != null) {
             clipboard.setPrimaryClip(clip);
         }
+        Snackbar.make(view, "Скопировано", Snackbar.LENGTH_LONG).show();
     }
 }

@@ -1,6 +1,8 @@
 package app.c.team.hackathon.presentation.info;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.provider.CalendarContract;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
 import android.view.View;
@@ -18,6 +20,7 @@ import app.c.team.hackathon.model.domain.Event;
 import app.c.team.hackathon.presentation.base.BackButtonListener;
 import app.c.team.hackathon.presentation.base.BaseFragment;
 import app.c.team.hackathon.presentation.bottom.BottomNavView;
+import app.c.team.hackathon.util.DateUtil;
 import app.c.team.hackathon.util.ViewUtil;
 import butterknife.BindView;
 
@@ -122,17 +125,21 @@ public class EventInfoFragment extends BaseFragment implements BackButtonListene
 
         // add to calendar
         addToCalendarButton.setOnClickListener(view -> {
-            // todo intent
-            event.getStartDate();
+            Intent intent = new Intent(Intent.ACTION_INSERT)
+                    .setData(CalendarContract.Events.CONTENT_URI)
+                    .putExtra(CalendarContract.Events.TITLE, "Android Academy: " + event.getTitle())
+                    .putExtra(CalendarContract.EXTRA_EVENT_BEGIN_TIME, event.getStartDate()*1000)
+                    .putExtra(CalendarContract.EXTRA_EVENT_END_TIME, event.getEndDate()*1000);
+            if (intent.resolveActivity(getActivity().getPackageManager()) != null) {
+                startActivity(intent);
+            }
         });
 
         // date
-        // todo format
-        date.setText("" + event.getStartDate());
+        date.setText(DateUtil.getDate(event.getStartDate()));
 
         // time
-        // todo format
-        time.setText("" + event.getStartDate());
+        time.setText(DateUtil.getTime(event.getStartDate()));
 
 
         // description
@@ -159,7 +166,7 @@ public class EventInfoFragment extends BaseFragment implements BackButtonListene
         if (event.getLocation() != null && event.getLocation().getWifi() != null && event.getLocation().getWifi().getName() != null) {
             wifiName.setText("Wi-fi: " + event.getLocation().getWifi().getName());
             wifiName.setOnClickListener(view -> {
-                ViewUtil.copyToBuffer(getContext(), event.getLocation().getWifi().getName());
+                ViewUtil.copyToBuffer(view, getContext(), event.getLocation().getWifi().getName());
             });
             wifiName.setVisibility(View.VISIBLE);
         } else {
@@ -170,7 +177,7 @@ public class EventInfoFragment extends BaseFragment implements BackButtonListene
         if (event.getLocation() != null && event.getLocation().getWifi() != null && event.getLocation().getWifi().getLogin() != null) {
             wifiLogin.setText("LOGIN: " + event.getLocation().getWifi().getLogin());
             wifiLogin.setOnClickListener(view -> {
-                ViewUtil.copyToBuffer(getContext(), event.getLocation().getWifi().getLogin());
+                ViewUtil.copyToBuffer(view, getContext(), event.getLocation().getWifi().getLogin());
             });
             wifiLogin.setVisibility(View.VISIBLE);
         } else {
@@ -181,21 +188,33 @@ public class EventInfoFragment extends BaseFragment implements BackButtonListene
         if (event.getLocation() != null && event.getLocation().getWifi() != null && event.getLocation().getWifi().getPassword() != null) {
             wifiPassword.setText("PASSWORD: " + event.getLocation().getWifi().getPassword());
             wifiPassword.setOnClickListener(view -> {
-                ViewUtil.copyToBuffer(getContext(), event.getLocation().getWifi().getPassword());
+                ViewUtil.copyToBuffer(view, getContext(), event.getLocation().getWifi().getPassword());
             });
             wifiPassword.setVisibility(View.VISIBLE);
         } else {
             wifiPassword.setVisibility(View.GONE);
         }
 
-        // todo status
+        // status
+        if (event.isRegistered()) {
+            status.setImageResource(event.isVisited()
+                    ? R.drawable.circle_check_green
+                    : R.drawable.circle_yellow);
+            status.setVisibility(View.VISIBLE);
+        } else {
+            status.setVisibility(View.GONE);
+        }
 
+        // qr
+        qrContainer.setVisibility(event.isRegistered() && !event.isVisited()
+                ? View.VISIBLE
+                : View.GONE);
 
         // register button
-        //todo if status not reg and time not past
-        fab.setOnClickListener(view -> {
-            // todo register
-        });
-
+        if (!event.isRegistered() && System.currentTimeMillis() > (event.getStartDate() * 1000)) {
+            fab.setOnClickListener(view -> {
+                // todo register dialog
+            });
+        }
     }
 }

@@ -32,7 +32,6 @@ public class TabContainerFragment extends Fragment implements BackButtonListener
 
 
     public static TabContainerFragment newInstance(String tabName) {
-
         Bundle args = new Bundle();
         args.putString(KEY_NAME, tabName);
         TabContainerFragment fragment = new TabContainerFragment();
@@ -63,7 +62,6 @@ public class TabContainerFragment extends Fragment implements BackButtonListener
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         return inflater.inflate(R.layout.tab, container, false);
     }
-
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
@@ -100,7 +98,6 @@ public class TabContainerFragment extends Fragment implements BackButtonListener
     @Override
     public boolean onBackPressed() {
         Fragment fragment = getCurrentFragment();
-
         if (fragment instanceof BackButtonListener && ((BackButtonListener) fragment).onBackPressed())
             return true;
         else {

@@ -41,6 +41,11 @@ public class DateUtil {
         return new SimpleDateFormat("HH:mm", Locale.getDefault()).format(new Date(time * 1000));
     }
 
+    public static String getDate(int time) {
+        return new SimpleDateFormat("dd MMMM yyyy", Locale.getDefault()).format(new Date(time * 1000));
+    }
+
+
     public static int compareToNow(int time) {
         return Calendar.getInstance().getTime().compareTo(new Date(time * 1000));
     }
