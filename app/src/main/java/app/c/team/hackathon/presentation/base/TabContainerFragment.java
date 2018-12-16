@@ -75,6 +75,7 @@ public class TabContainerFragment extends Fragment implements BackButtonListener
                     router.replaceScreen(new Screens.EventListScreen());
                     break;
                 case VACANCIES:
+                    router.replaceScreen(new Screens.VacancyListScreen());
                     break;
                 case MENTORS:
                     router.replaceScreen(new Screens.MentorListScreen());

@@ -7,7 +7,9 @@ import javax.inject.Inject;
 
 import app.c.team.hackathon.model.domain.Event;
 import app.c.team.hackathon.model.domain.User;
+import app.c.team.hackathon.model.domain.Vacancy;
 import app.c.team.hackathon.presentation.mentors.MentorItem;
+import app.c.team.hackathon.presentation.vacancies.VacancyItem;
 import io.reactivex.Single;
 
 public class ApiProvider {
@@ -39,6 +41,18 @@ public class ApiProvider {
                         mentorItems.add(new MentorItem(user));
                     }
                     return mentorItems;
+                });
+    }
+
+    public Single<List<VacancyItem>> loadVacancyData() {
+        return api
+                .getVacancyList()
+                .map(baseResponse -> {
+                    List<VacancyItem> vacancyItems = new ArrayList<>();
+                    for (Vacancy vacancy : baseResponse.getData()) {
+                        vacancyItems.add(new VacancyItem(vacancy));
+                    }
+                    return vacancyItems;
                 });
     }
 
