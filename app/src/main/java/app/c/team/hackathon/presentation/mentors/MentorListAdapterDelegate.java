@@ -21,7 +21,7 @@ public class MentorListAdapterDelegate extends AbsListItemAdapterDelegate<Mentor
 
     @Override
     public boolean isForViewType(Object item, @NonNull List<Object> items, int position) {
-        return items instanceof User;
+        return item instanceof MentorItem;
     }
 
 

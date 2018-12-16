@@ -21,5 +21,5 @@ public interface AndroidAcademyApi {
     Single<BaseResponse<List<Event>>> getEventList();
 
     @GET("mentors")
-    Single<List<User>> getMentorList();
+    Single<BaseResponse<List<User>>> getMentorList();
 }

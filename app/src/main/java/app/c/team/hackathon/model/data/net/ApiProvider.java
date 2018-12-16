@@ -33,9 +33,9 @@ public class ApiProvider {
     public Single<List<MentorItem>> loadMentorData() {
         return api
                 .getMentorList()
-                .map(users -> {
+                .map(baseResponse -> {
                     List<MentorItem> mentorItems = new ArrayList<>();
-                    for (User user : users) {
+                    for (User user : baseResponse.getData()) {
                         mentorItems.add(new MentorItem(user));
                     }
                     return mentorItems;
