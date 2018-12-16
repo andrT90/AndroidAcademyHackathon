@@ -69,14 +69,14 @@ public class EventViewHolder extends BaseViewHolder {
         ViewUtil.viewSetVisibleOrInvisible(lineTop, eventItem.isFirst());
         ViewUtil.viewSetVisibleOrInvisible(lineBottom, eventItem.isLast());
 
-        if (eventItem.getItem().isRegistered()) {
-            ViewUtil.viewSetVisibleOrInvisible(status, true);
-            status.setText(R.string.event_list_registered);
-            ViewUtil.setLeftDrawble(status, R.drawable.circle_yellow);
-        } else if (eventItem.isVisited()) {
+        if (eventItem.isVisited()) {
             ViewUtil.viewSetVisibleOrInvisible(status, true);
             status.setText(R.string.event_list_check_in);
             ViewUtil.setLeftDrawble(status, R.drawable.circle_check_green);
+        } else if (eventItem.getItem().isRegistered()) {
+            ViewUtil.viewSetVisibleOrInvisible(status, true);
+            status.setText(R.string.event_list_registered);
+            ViewUtil.setLeftDrawble(status, R.drawable.circle_yellow);
         } else ViewUtil.viewSetVisibleOrInvisible(status, false);
 
         circle.setBackgroundResource(

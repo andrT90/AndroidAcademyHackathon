@@ -4,7 +4,6 @@ import android.util.Log;
 
 import com.arellomobile.mvp.InjectViewState;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -46,6 +45,8 @@ public class MentorListPresenter extends BasePresenter<MentorListView> {
     private void loadData() {
         addToComposite(mentorRepository.loadData()
                 .observeOn(AndroidSchedulers.mainThread())
+                .doOnSubscribe(d -> getViewState().showLoading(true))
+                .doAfterTerminate(() -> getViewState().showLoading(false))
                 .subscribe(
                         mentorItems -> {
                             mentorItemList = mentorItems;

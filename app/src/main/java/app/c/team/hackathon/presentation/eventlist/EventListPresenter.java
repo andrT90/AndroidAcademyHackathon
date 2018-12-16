@@ -46,7 +46,10 @@ public class EventListPresenter extends BasePresenter<EventListView> {
                             }
                             return objects;
                         })
+
                         .observeOn(schedulers.main())
+                        .doOnSubscribe(d -> getViewState().showLoading(true))
+                        .doAfterTerminate(() -> getViewState().showLoading(false))
                         .subscribe(
                                 list -> getViewState().showData(list),
                                 throwable -> getViewState().showError(throwable.getMessage())

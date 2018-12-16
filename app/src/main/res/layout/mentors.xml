@@ -22,8 +22,12 @@
         app:layout_behavior="@string/appbar_scrolling_view_behavior"
         app:spanCount="3"
         tools:listItem="@layout/mentors_list_item"
-        tools:listitem="@layout/mentors_list_item">
+        tools:listitem="@layout/mentors_list_item" />
 
+    <ProgressBar
+        android:id="@+id/loading"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center" />
 
-    </android.support.v7.widget.RecyclerView>
 </android.support.design.widget.CoordinatorLayout>
