@@ -1,13 +1,203 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
+<android.support.design.widget.CoordinatorLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <TextView
+    <ScrollView
+        android:id="@+id/scroll"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="инфо"
-        />
+        android:layout_height="match_parent">
 
-</android.support.constraint.ConstraintLayout>
+        <LinearLayout
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            xmlns:tools="http://schemas.android.com/tools"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <FrameLayout
+                android:id="@+id/qr_container"
+                android:layout_width="match_parent"
+                android:layout_height="260dp"
+                android:background="@color/colorAccent">
+
+                <ImageView
+                    android:id="@+id/qr"
+                    android:layout_width="212dp"
+                    android:layout_height="212dp"
+                    android:layout_gravity="center"
+                    android:background="@color/white"
+                    android:src="@drawable/qr"/>
+            </FrameLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:id="@+id/mentor_photo"
+                    android:layout_width="68dp"
+                    android:layout_height="68dp"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="@dimen/dimen_32dp"
+                    android:layout_marginBottom="4dp"
+                    tools:src="@tools:sample/avatars"/>
+
+                <ImageView
+                    android:id="@+id/status"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="32dp"
+                    android:layout_marginRight="16dp"
+                    app:srcCompat="@drawable/circle_yellow"/>
+
+                <TextView
+                    android:id="@+id/mentor_name"
+                    style="@style/Text.Regular"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/mentor_photo"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginBottom="8dp"
+                    android:textSize="12sp"
+                    tools:text="@tools:sample/cities"/>
+
+                <TextView
+                    android:id="@+id/event_title"
+                    style="@style/Text.Regular"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/mentor_name"
+                    android:layout_centerHorizontal="true"
+                    android:textSize="48sp"
+                    tools:text="@tools:sample/cities"/>
+
+                <LinearLayout
+                    android:id="@+id/add_to_calendar_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/event_title"
+                    android:layout_centerHorizontal="true"
+                    android:background="@drawable/shape_button_outline"
+                    android:orientation="vertical"
+                    android:padding="4dp">
+
+                    <TextView
+                        android:id="@+id/date"
+                        style="@style/Text.Regular"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:drawableStart="@drawable/ic_calenadar"
+                        android:textSize="12sp"
+                        tools:text="@tools:sample/cities"/>
+
+                    <TextView
+                        android:id="@+id/time"
+                        style="@style/Text.Regular"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="8dp"
+                        android:textSize="12sp"
+                        tools:text="@tools:sample/cities"/>
+
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/description"
+                    style="@style/Text.Regular"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/add_to_calendar_button"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginRight="16dp"
+                    android:textSize="12sp"
+                    tools:text="@tools:sample/cities"/>
+
+                <Button
+                    android:id="@+id/location"
+                    style="@style/Text.Regular"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/description"
+                    android:layout_centerHorizontal="true"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginRight="16dp"
+                    android:background="@drawable/shape_button"
+                    android:textSize="14sp"
+                    tools:text="@tools:sample/cities"/>
+
+                <TextView
+                    android:id="@+id/wifi_name"
+                    style="@style/Text.Regular"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/location"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="40dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginRight="40dp"
+                    android:gravity="center"
+                    android:textSize="14sp"
+                    tools:text="@tools:sample/cities"/>
+
+                <TextView
+                    android:id="@+id/wifi_login"
+                    style="@style/Text.Regular"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/wifi_name"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="40dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginRight="40dp"
+                    android:background="@drawable/shape_button_outline"
+                    android:drawableLeft="@drawable/ic_copy"
+                    android:gravity="center"
+                    android:padding="8dp"
+                    android:textSize="14sp"
+                    tools:text="@tools:sample/cities"/>
+
+                <TextView
+                    android:id="@+id/wifi_password"
+                    style="@style/Text.Regular"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/wifi_login"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="40dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginRight="40dp"
+                    android:layout_marginBottom="60dp"
+                    android:background="@drawable/shape_button_outline"
+                    android:drawableLeft="@drawable/ic_copy"
+                    android:gravity="center"
+                    android:padding="8dp"
+                    android:textSize="14sp"
+                    tools:text="@tools:sample/cities"/>
+            </RelativeLayout>
+        </LinearLayout>
+    </ScrollView>
+
+    <android.support.design.widget.FloatingActionButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|right"
+        android:layout_margin="16dp"
+        android:src="@drawable/ic_add"
+        app:fabSize="normal"
+        app:layout_anchor="@id/scroll"
+        app:layout_anchorGravity="bottom|right|end"/>
+
+
+</android.support.design.widget.CoordinatorLayout>

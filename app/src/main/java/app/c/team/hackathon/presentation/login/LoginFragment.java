@@ -20,6 +20,7 @@ import com.arellomobile.mvp.presenter.ProvidePresenter;
 import javax.inject.Inject;
 
 import app.c.team.hackathon.R;
+import app.c.team.hackathon.di.ComponentsHolder;
 import app.c.team.hackathon.presentation.base.BackButtonListener;
 import app.c.team.hackathon.presentation.base.BaseFragment;
 import butterknife.BindView;
@@ -63,6 +64,7 @@ public class LoginFragment extends BaseFragment implements BackButtonListener, L
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        ComponentsHolder.getInstance().appComponent().inject(this);
         enterBtn.setOnClickListener(v -> presenter.onAuthPressed());
     }
 
