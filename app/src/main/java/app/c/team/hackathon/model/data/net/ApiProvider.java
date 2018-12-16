@@ -41,4 +41,12 @@ public class ApiProvider {
                     return mentorItems;
                 });
     }
+
+    public Single<Event> getEvent(int id) {
+        return api
+                .getEvent(id)
+                .map(BaseResponse::getData);
+
+    }
+
 }
