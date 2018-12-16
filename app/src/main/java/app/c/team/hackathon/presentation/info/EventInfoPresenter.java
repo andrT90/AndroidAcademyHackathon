@@ -26,6 +26,11 @@ public class EventInfoPresenter extends BasePresenter<EventInfoView> {
     @Override
     protected void onFirstViewAttach() {
         super.onFirstViewAttach();
+        loadData();
+    }
+
+    private void loadData() {
+//        addToComposite(eventRepository.getEvent());
     }
 
     public void onBackPressed() {

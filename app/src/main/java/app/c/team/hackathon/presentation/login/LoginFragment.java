@@ -71,6 +71,7 @@ public class LoginFragment extends BaseFragment implements BackButtonListener, L
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        ComponentsHolder.getInstance().appComponent().inject(this);
         enterBtn.setOnClickListener(v -> presenter.onAuthPressed());
     }
 
