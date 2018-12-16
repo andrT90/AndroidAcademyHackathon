@@ -21,6 +21,7 @@ import app.c.team.hackathon.model.domain.Event;
 import app.c.team.hackathon.presentation.base.BackButtonListener;
 import app.c.team.hackathon.presentation.base.BaseFragment;
 import app.c.team.hackathon.presentation.base.TabContainerFragment;
+import app.c.team.hackathon.util.ViewUtil;
 import butterknife.BindView;
 import ru.terrakok.cicerone.Router;
 
@@ -75,7 +76,8 @@ public class EventListFragment extends BaseFragment implements EventListView, Ba
 
             @Override
             public void onLocationClick(Event event) {
-
+                if (getContext() == null) return;
+                ViewUtil.geoIntent(getContext(), event.getLocation().getLatitude(), event.getLocation().getLongitude());
             }
         });
 

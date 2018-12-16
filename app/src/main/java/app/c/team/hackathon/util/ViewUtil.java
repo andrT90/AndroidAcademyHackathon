@@ -1,17 +1,19 @@
 package app.c.team.hackathon.util;
 
-import android.support.annotation.DrawableRes;
 import android.content.ClipData;
 import android.content.ClipboardManager;
 import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
+import android.support.annotation.DrawableRes;
 import android.support.annotation.LayoutRes;
 import android.support.annotation.NonNull;
 import android.support.design.widget.Snackbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
 
@@ -51,5 +53,12 @@ public class ViewUtil {
             clipboard.setPrimaryClip(clip);
         }
         Snackbar.make(view, "Скопировано", Snackbar.LENGTH_LONG).show();
+    }
+
+    public static void geoIntent(Context context, double lat, double lon) {
+        Uri uri = Uri.parse("geo:" + lat + "," + lon);
+        Intent mapIntent = new Intent(Intent.ACTION_VIEW, uri);
+        if (mapIntent.resolveActivity(context.getPackageManager()) != null)
+            context.startActivity(mapIntent);
     }
 }

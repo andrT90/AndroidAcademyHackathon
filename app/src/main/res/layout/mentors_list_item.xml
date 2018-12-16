@@ -15,7 +15,7 @@
         android:layout_gravity="center_horizontal"
         android:layout_weight="1"
         tools:src="@tools:sample/avatars"
-        app:civ_border_color="@color/black"
+        app:civ_border_color="@color/greenLight"
         app:civ_border_width="@dimen/dimen_1dp" />
 
     <TextView
