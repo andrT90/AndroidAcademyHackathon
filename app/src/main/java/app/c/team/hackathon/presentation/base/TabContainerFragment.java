@@ -17,6 +17,7 @@ import app.c.team.hackathon.Screens;
 import app.c.team.hackathon.di.ComponentsHolder;
 import app.c.team.hackathon.model.data.LocalCiceroneHolder;
 import app.c.team.hackathon.model.navigation.HackathonNavigator;
+import app.c.team.hackathon.presentation.bottom.BottomNavView;
 import ru.terrakok.cicerone.Cicerone;
 import ru.terrakok.cicerone.Router;
 
@@ -70,6 +71,7 @@ public class TabContainerFragment extends Fragment implements BackButtonListener
         if (getCurrentFragment() == null) {
             if (getLocalCicerone() == null) return;
             Router router = getLocalCicerone().getRouter();
+            if (router == null) return;
             switch (getContainerName()) {
                 case EVENTS:
                     router.replaceScreen(new Screens.EventListScreen());
@@ -96,11 +98,20 @@ public class TabContainerFragment extends Fragment implements BackButtonListener
     }
 
     @Override
-    public void onBackPressed() {
+    public boolean onBackPressed() {
         Fragment fragment = getCurrentFragment();
 
-        if (fragment instanceof BackButtonListener) ((BackButtonListener) fragment).onBackPressed();
-        else if (getActivity() != null) getActivity().onBackPressed();
+        if (fragment instanceof BackButtonListener && ((BackButtonListener) fragment).onBackPressed())
+            return true;
+        else {
+            ((BottomNavView) getActivity()).getRouter().exit();
+            return true;
+        }
+
+    }
+
+    public Router getRouter() {
+        return getLocalCicerone() == null ? null : getLocalCicerone().getRouter();
     }
 
     @Nullable

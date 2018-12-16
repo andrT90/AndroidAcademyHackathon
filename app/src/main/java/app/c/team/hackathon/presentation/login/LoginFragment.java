@@ -96,8 +96,9 @@ public class LoginFragment extends BaseFragment implements BackButtonListener, L
 
 
     @Override
-    public void onBackPressed() {
+    public boolean onBackPressed() {
         presenter.onBackPressed();
+        return true;
     }
 
     @Override

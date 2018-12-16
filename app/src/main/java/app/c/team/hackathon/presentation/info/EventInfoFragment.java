@@ -87,8 +87,10 @@ public class EventInfoFragment extends BaseFragment implements BackButtonListene
     }
 
     @Override
-    public void onBackPressed() {
-        presenter.onBackPressed();
+    public boolean onBackPressed() {
+        presenter.backClicked();
+        return true;
+
     }
 
 

@@ -11,7 +11,10 @@ public class MentorListAdapter extends ListDelegationAdapter<List<Object>> {
         delegatesManager.addDelegate(new MentorListAdapterDelegate(callback));
     }
 
-
+    public void setData(List<Object> data) {
+        setItems(data);
+        notifyDataSetChanged();
+    }
     public interface Callback {
         void onEventClick(User user);
     }

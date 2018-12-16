@@ -5,11 +5,14 @@ import android.support.annotation.IdRes;
 import android.support.annotation.Nullable;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 
 import com.arellomobile.mvp.MvpAppCompatActivity;
 import com.arellomobile.mvp.presenter.InjectPresenter;
 import com.arellomobile.mvp.presenter.ProvidePresenter;
+
+import java.util.List;
 
 import javax.inject.Inject;
 
@@ -113,27 +116,32 @@ public class BottomNavActivity extends MvpAppCompatActivity implements BottomNav
     }
 
     private void selectTab(String screen) {
-        Fragment currentFragment = getCurrentFragment();
-        Fragment newFragment = getSupportFragmentManager().findFragmentByTag(screen);
-        if (newFragment != null && currentFragment == newFragment)
-            return;
-        FragmentTransaction transition = getSupportFragmentManager().beginTransaction();
+        FragmentManager fm = getSupportFragmentManager();
+        Fragment currentFragment = null;
+        List<Fragment> fragments = fm.getFragments();
+        for (Fragment f : fragments) {
+            if (f.isVisible()) {
+                currentFragment = f;
+                break;
+            }
+        }
+        Fragment newFragment = fm.findFragmentByTag(screen);
 
-        if (newFragment == null)
-            transition.add(getContainerId(), getTabByScreenName(screen), screen);
+        if (newFragment != null && currentFragment == newFragment) return;
+
+        FragmentTransaction transaction = fm.beginTransaction();
+        if (newFragment == null) {
+            transaction.add(getContainerId(), getTabByScreenName(screen), screen);
+        }
 
         if (currentFragment != null) {
-            transition.hide(currentFragment);
-            currentFragment.setUserVisibleHint(false);
+            transaction.hide(currentFragment);
         }
-
 
         if (newFragment != null) {
-            transition.show(newFragment);
+            transaction.show(newFragment);
         }
-
-        transition.commitNow();
-
+        transaction.commitNow();
     }
 
     public Fragment getTabByScreenName(String screen) {

@@ -15,6 +15,7 @@ import app.c.team.hackathon.R;
 import app.c.team.hackathon.model.domain.Event;
 import app.c.team.hackathon.presentation.base.BackButtonListener;
 import app.c.team.hackathon.presentation.base.BaseFragment;
+import app.c.team.hackathon.presentation.base.TabContainerFragment;
 import app.c.team.hackathon.presentation.bottom.BottomNavView;
 import app.c.team.hackathon.presentation.info.EventInfoFragment;
 import app.c.team.hackathon.presentation.links.EventLinksFragment;
@@ -35,7 +36,7 @@ public class EventFragment extends BaseFragment implements BackButtonListener, E
 
     @ProvidePresenter
     EventPresenter provideTutorialPresenter() {
-        return new EventPresenter(((BottomNavView) getActivity()).getRouter(), getArguments().getParcelable(KEY_EVENT));
+        return new EventPresenter(((TabContainerFragment) getParentFragment()).getRouter(, getArguments().getParcelable(KEY_EVENT)));
     }
 
     @Override
@@ -67,8 +68,9 @@ public class EventFragment extends BaseFragment implements BackButtonListener, E
     }
 
     @Override
-    public void onBackPressed() {
-        presenter.onBackPressed();
+    public boolean onBackPressed() {
+        presenter.backClicked();
+        return true;
     }
 
     private class EventPagerAdapter extends FragmentPagerAdapter {
