@@ -5,7 +5,9 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.TextView;
 
 import com.arellomobile.mvp.presenter.InjectPresenter;
 import com.arellomobile.mvp.presenter.ProvidePresenter;
@@ -44,6 +46,12 @@ public class EventListFragment extends BaseFragment implements EventListView {
         return new EventListPresenter(router, ((TabContainerFragment) getParentFragment()).getLocalCicerone().getRouter());
     }
 
+    @BindView(R.id.toolbar)
+    Toolbar toolbar;
+
+    @BindView(R.id.toolbar_title)
+    TextView toolbarTitle;
+
     @BindView(R.id.events)
     protected RecyclerView events;
 
@@ -61,7 +69,7 @@ public class EventListFragment extends BaseFragment implements EventListView {
         if (adapter == null) adapter = new EventListAdapter(new EventListAdapter.Callback() {
             @Override
             public void onEventClick(Event event) {
-
+                presenter.eventClicked(event);
             }
 
             @Override
@@ -72,10 +80,13 @@ public class EventListFragment extends BaseFragment implements EventListView {
 
         events.setLayoutManager(new LinearLayoutManager(getContext()));
         events.setAdapter(adapter);
+
+        toolbarTitle.setText(R.string.event_list_title);
+        toolbar.setNavigationIcon(R.drawable.android);
     }
 
     @Override
     public void showData(List<Object> data) {
-        adapter.setItems(data);
+        adapter.setData(data);
     }
 }

@@ -12,4 +12,6 @@
 
     <!--Event List-->
     <string name="event_list_title">Расписание</string>
+    <string name="event_list_registered">Зарегистрирован</string>
+    <string name="event_list_check_in">Посетил</string>
 </resources>

@@ -11,10 +11,10 @@ import ru.terrakok.cicerone.Router;
 
 public class BasePresenter<View extends BaseView> extends MvpPresenter<View> {
     @Nullable
-    private final Router mainRouter;
+    protected final Router mainRouter;
 
     @Nullable
-    private final Router localRouter;
+    protected final Router localRouter;
 
     public BasePresenter(@Nullable Router mainRouter, @Nullable Router localRouter) {
         this.mainRouter = mainRouter;

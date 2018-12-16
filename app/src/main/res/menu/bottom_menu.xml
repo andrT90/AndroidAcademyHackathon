@@ -4,7 +4,7 @@
     <item
         android:id="@+id/lectures"
         android:enabled="true"
-        android:icon="@drawable/android"
+        android:icon="@drawable/tab_events_selected"
         android:title="@string/bottom_lectures"
         app:showAsAction="ifRoom" />
     <item

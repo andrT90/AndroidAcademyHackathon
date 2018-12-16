@@ -13,6 +13,7 @@ import android.view.ViewGroup;
 import javax.inject.Inject;
 
 import app.c.team.hackathon.R;
+import app.c.team.hackathon.Screens;
 import app.c.team.hackathon.di.ComponentsHolder;
 import app.c.team.hackathon.model.data.LocalCiceroneHolder;
 import app.c.team.hackathon.model.navigation.HackathonNavigator;
@@ -20,6 +21,11 @@ import ru.terrakok.cicerone.Cicerone;
 import ru.terrakok.cicerone.Router;
 
 public class TabContainerFragment extends Fragment implements BackButtonListener {
+
+    public static final String EVENTS = "events";
+    public static final String VACANCIES = "vacancies";
+    public static final String MENTORS = "mentors";
+    public static final String PROFILE = "profile";
 
     private static final String KEY_NAME = "key name";
 
@@ -62,7 +68,12 @@ public class TabContainerFragment extends Fragment implements BackButtonListener
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         if (getCurrentFragment() == null) {
+            if (getLocalCicerone() == null) return;
+            Router router = getLocalCicerone().getRouter();
             switch (getContainerName()) {
+                case EVENTS:
+                    router.replaceScreen(new Screens.EventListScreen());
+                    break;
             }
         }
     }

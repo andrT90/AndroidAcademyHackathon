@@ -11,6 +11,10 @@ public class EventListAdapter extends ListDelegationAdapter<List<Object>> {
         delegatesManager.addDelegate(new EventListAdapterDelegate(callback));
     }
 
+    public void setData(List<Object> data) {
+        setItems(data);
+        notifyDataSetChanged();
+    }
 
     public interface Callback {
         void onEventClick(Event event);

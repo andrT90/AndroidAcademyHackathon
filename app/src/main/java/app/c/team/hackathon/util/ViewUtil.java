@@ -1,10 +1,12 @@
 package app.c.team.hackathon.util;
 
+import android.support.annotation.DrawableRes;
 import android.support.annotation.LayoutRes;
 import android.support.annotation.NonNull;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 public class ViewUtil {
     private ViewUtil() {
@@ -25,5 +27,9 @@ public class ViewUtil {
 
     public static View inflate(@NonNull ViewGroup parent, @LayoutRes int id) {
         return LayoutInflater.from(parent.getContext()).inflate(id, parent, false);
+    }
+
+    public static void setLeftDrawble(@NonNull TextView textView, @DrawableRes int id) {
+        textView.setCompoundDrawablesRelativeWithIntrinsicBounds(id, 0, 0, 0);
     }
 }

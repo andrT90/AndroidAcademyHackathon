@@ -11,8 +11,8 @@ import app.c.team.hackathon.di.ComponentsHolder;
 import app.c.team.hackathon.model.data.Preferences;
 import app.c.team.hackathon.presentation.base.BasePresenter;
 import app.c.team.hackathon.repository.LoginRepository;
+import app.c.team.hackathon.util.TextUtil;
 import io.reactivex.android.schedulers.AndroidSchedulers;
-import io.reactivex.schedulers.Schedulers;
 import ru.terrakok.cicerone.Router;
 
 @InjectViewState
@@ -31,6 +31,12 @@ public class LoginPresenter extends BasePresenter<LoginView> {
         this.router = router;
     }
 
+    @Override
+    protected void onFirstViewAttach() {
+        super.onFirstViewAttach();
+        if (TextUtil.isNotEmpty(preferences.getToken())) openMain();
+    }
+
     public void onBackPressed() {
         router.exit();
     }
@@ -40,13 +46,17 @@ public class LoginPresenter extends BasePresenter<LoginView> {
             addToComposite(loginRepository.login(email)
                     .observeOn(AndroidSchedulers.mainThread())
                     .subscribe(tokenResult -> {
-                        preferences.setToken(tokenResult.getToken());
-                        router.newRootScreen(new Screens.BottomNavScreen());
-                    }, throwable -> getViewState().showError("Сорян, братан" )
-            ));
+                                preferences.setToken(tokenResult.getToken());
+                                openMain();
+                            }, throwable -> getViewState().showError("Сорян, братан")
+                    ));
         } else {
             getViewState().validationFailed();
         }
+    }
+
+    private void openMain() {
+        router.replaceScreen(new Screens.BottomNavScreen());
     }
 
     public void onTextChanged(String email) {

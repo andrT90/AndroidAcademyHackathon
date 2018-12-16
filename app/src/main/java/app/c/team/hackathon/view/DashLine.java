@@ -42,6 +42,7 @@ public class DashLine extends View {
 
     private void init(Context context, AttributeSet attrs) {
         if (attrs != null) {
+            this.setLayerType(View.LAYER_TYPE_SOFTWARE, null);
             TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.DashLine, 0, 0);
 
             try {
@@ -62,10 +63,9 @@ public class DashLine extends View {
         paint.setPathEffect(new DashPathEffect(new float[]{dashLength, dashGap,}, 0));
     }
 
-
     @Override
     protected void onDraw(Canvas canvas) {
-        super.onDraw(canvas);
+        canvas.save();
         if (isHorizontal) {
             float center = getHeight() * .5f;
             canvas.drawLine(0, center, getWidth(), center, paint);
@@ -73,5 +73,6 @@ public class DashLine extends View {
             float center = getWidth() * .5f;
             canvas.drawLine(center, 0, center, getHeight(), paint);
         }
+        canvas.restore();
     }
 }

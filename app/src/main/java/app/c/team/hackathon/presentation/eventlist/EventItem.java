@@ -29,4 +29,12 @@ public class EventItem {
     public boolean isFirst() {
         return isFirst;
     }
+
+    public boolean isRegistred() {
+        return item.isRegistered();
+    }
+
+    public boolean isVisited() {
+        return item.isVisited();
+    }
 }

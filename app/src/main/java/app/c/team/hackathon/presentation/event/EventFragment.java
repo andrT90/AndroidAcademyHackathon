@@ -12,6 +12,7 @@ import com.arellomobile.mvp.presenter.InjectPresenter;
 import com.arellomobile.mvp.presenter.ProvidePresenter;
 
 import app.c.team.hackathon.R;
+import app.c.team.hackathon.model.domain.Event;
 import app.c.team.hackathon.presentation.base.BackButtonListener;
 import app.c.team.hackathon.presentation.base.BaseFragment;
 import app.c.team.hackathon.presentation.bottom.BottomNavView;
@@ -21,6 +22,7 @@ import app.c.team.hackathon.presentation.notes.EventNotesFragment;
 import butterknife.BindView;
 
 public class EventFragment extends BaseFragment implements BackButtonListener, EventView {
+    private static final String KEY_EVENT = "event";
 
     @InjectPresenter
     EventPresenter presenter;
@@ -41,8 +43,13 @@ public class EventFragment extends BaseFragment implements BackButtonListener, E
     }
 
 
-    public static Fragment getNewInstance() {
-        return new EventFragment();
+    public static EventFragment newInstance(Event event) {
+
+        Bundle args = new Bundle();
+        args.putParcelable(KEY_EVENT, event);
+        EventFragment fragment = new EventFragment();
+        fragment.setArguments(args);
+        return fragment;
     }
 
     @Override

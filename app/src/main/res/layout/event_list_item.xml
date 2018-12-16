@@ -4,18 +4,20 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="?attr/selectableItemBackground"
+    android:clickable="true"
 
-    android:layout_height="wrap_content">
+    android:focusable="true">
 
     <app.c.team.hackathon.view.DashLine
         android:id="@+id/line"
         android:layout_width="1dp"
         android:layout_height="0dp"
         android:layout_marginStart="@dimen/event_list_line_margin"
-
         android:visibility="visible"
-        app:dl_dashLength="5dp"
         app:dl_dashGap="5dp"
+        app:dl_dashLength="5dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@+id/date"
         app:layout_constraintTop_toTopOf="parent" />
@@ -27,7 +29,7 @@
         android:layout_marginStart="@dimen/event_list_line_margin"
         android:background="@color/white"
         android:visibility="invisible"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toBottomOf="@+id/circle"
         app:layout_constraintStart_toEndOf="@+id/date"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0" />
@@ -41,7 +43,7 @@
         android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@+id/date"
-        app:layout_constraintTop_toTopOf="@+id/line_top"
+        app:layout_constraintTop_toBottomOf="@+id/circle"
         app:layout_constraintVertical_bias="0" />
 
 
@@ -115,8 +117,11 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/dimen_32dp"
         android:layout_marginTop="@dimen/dimen_8dp"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:clickable="true"
         android:drawablePadding="@dimen/dimen_8dp"
         android:drawableStart="@drawable/location_green"
+        android:focusable="true"
         app:layout_constraintEnd_toStartOf="@id/number"
         app:layout_constraintStart_toEndOf="@+id/circle"
         app:layout_constraintTop_toBottomOf="@id/mentor"
