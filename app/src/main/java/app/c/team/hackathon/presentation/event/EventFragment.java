@@ -36,7 +36,7 @@ public class EventFragment extends BaseFragment implements BackButtonListener, E
 
     @ProvidePresenter
     EventPresenter provideTutorialPresenter() {
-        return new EventPresenter(((TabContainerFragment) getParentFragment()).getRouter(, getArguments().getParcelable(KEY_EVENT)));
+        return new EventPresenter(((TabContainerFragment) getParentFragment()).getRouter(), getArguments().getParcelable(KEY_EVENT));
     }
 
     @Override
