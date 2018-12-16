@@ -10,10 +10,12 @@ import android.view.View;
 import com.arellomobile.mvp.presenter.InjectPresenter;
 import com.arellomobile.mvp.presenter.ProvidePresenter;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.inject.Inject;
 
 import app.c.team.hackathon.R;
-import app.c.team.hackathon.model.domain.User;
 import app.c.team.hackathon.presentation.base.BackButtonListener;
 import app.c.team.hackathon.presentation.base.BaseFragment;
 import butterknife.BindView;
@@ -29,6 +31,7 @@ public class MentorListFragment extends BaseFragment implements BackButtonListen
 
     @Inject
     Router router;
+    private MentorListAdapter adapter;
 
     @ProvidePresenter
     MentorListPresenter provideTutorialPresenter() {
@@ -47,8 +50,9 @@ public class MentorListFragment extends BaseFragment implements BackButtonListen
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        MentorListAdapter adapter = new MentorListAdapter(user -> { });
-        GridLayoutManager manager = new GridLayoutManager(getContext(), 3 );
+        adapter = new MentorListAdapter(user -> {
+        });
+        GridLayoutManager manager = new GridLayoutManager(getContext(), 3);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(manager);
     }
@@ -74,4 +78,13 @@ public class MentorListFragment extends BaseFragment implements BackButtonListen
         presenter.onBackPressed();
     }
 
+    @Override
+    public void showMentors(List<MentorItem> mentorItemList) {
+        List<Object> objects = new ArrayList<>();
+        for (MentorItem item : mentorItemList) {
+            Object object = (Object) item;
+            objects.add(object);
+        }
+        adapter.setData(objects);
+    }
 }

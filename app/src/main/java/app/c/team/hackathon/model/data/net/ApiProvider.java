@@ -1,5 +1,6 @@
 package app.c.team.hackathon.model.data.net;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -29,9 +30,15 @@ public class ApiProvider {
                 .map(BaseResponse::getData);
     }
 
-    /*public Single<List<MentorItem>> loadMentorData() {
+    public Single<List<MentorItem>> loadMentorData() {
         return api
                 .getMentorList()
-                .map();
-    }*/
+                .map(users -> {
+                    List<MentorItem> mentorItems = new ArrayList<>();
+                    for (User user : users) {
+                        mentorItems.add(new MentorItem(user));
+                    }
+                    return mentorItems;
+                });
+    }
 }

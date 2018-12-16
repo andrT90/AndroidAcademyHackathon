@@ -20,6 +20,6 @@ public interface AndroidAcademyApi {
     @GET("events")
     Single<BaseResponse<List<Event>>> getEventList();
 
-    @GET()//FIXME address
+    @GET("mentors")
     Single<List<User>> getMentorList();
 }

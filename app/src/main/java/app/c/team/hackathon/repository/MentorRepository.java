@@ -18,8 +18,7 @@ public class MentorRepository {
     }
 
     public Single<List<MentorItem>> loadData() {
-        return Single.never();
-        //return provider.loadMentorData();
+        return provider.loadMentorData();
     }
 
 }
