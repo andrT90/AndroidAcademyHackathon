@@ -74,8 +74,9 @@ public class MentorListFragment extends BaseFragment implements BackButtonListen
 
 
     @Override
-    public void onBackPressed() {
-        presenter.onBackPressed();
+    public boolean onBackPressed() {
+        presenter.backClicked();
+        return true;
     }
 
     @Override
