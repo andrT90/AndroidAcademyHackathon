@@ -45,8 +45,13 @@ public class Screens {
         @Override
         public Fragment getFragment() {
             return EventFragment.newInstance(event);
-//            return MentorListFragment.newInstance();
         }
     }
 
+    public static final class MentorListScreen extends SupportAppScreen {
+        @Override
+        public Fragment getFragment() {
+            return MentorListFragment.newInstance();
+        }
+    }
 }

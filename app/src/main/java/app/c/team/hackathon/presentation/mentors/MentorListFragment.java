@@ -6,6 +6,7 @@ import android.support.annotation.Nullable;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.TextView;
 
 import com.arellomobile.mvp.presenter.InjectPresenter;
 import com.arellomobile.mvp.presenter.ProvidePresenter;
@@ -25,6 +26,9 @@ public class MentorListFragment extends BaseFragment implements BackButtonListen
 
     @BindView(R.id.mentors_recycler)
     RecyclerView recyclerView;
+
+    @BindView(R.id.toolbar_title)
+    TextView title;
 
     @InjectPresenter
     MentorListPresenter presenter;
@@ -55,6 +59,8 @@ public class MentorListFragment extends BaseFragment implements BackButtonListen
         GridLayoutManager manager = new GridLayoutManager(getContext(), 3);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(manager);
+
+        title.setText(R.string.mentors_title);
     }
 
 
@@ -81,11 +87,7 @@ public class MentorListFragment extends BaseFragment implements BackButtonListen
 
     @Override
     public void showMentors(List<MentorItem> mentorItemList) {
-        List<Object> objects = new ArrayList<>();
-        for (MentorItem item : mentorItemList) {
-            Object object = (Object) item;
-            objects.add(object);
-        }
+        List<Object> objects = new ArrayList<>(mentorItemList);
         adapter.setData(objects);
     }
 }

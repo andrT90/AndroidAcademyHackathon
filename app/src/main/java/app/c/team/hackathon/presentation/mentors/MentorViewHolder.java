@@ -25,7 +25,6 @@ public class MentorViewHolder extends BaseViewHolder {
     public void bind(MentorItem item, MentorListAdapter.Callback callback) {
         this.mentorItem = item;
         this.callback = callback;
-        //TODO Set portrait
         ViewUtil.loadImage(portrait, item.getImageUrl());
         name.setText(item.getName());
         job.setText(item.getJob());

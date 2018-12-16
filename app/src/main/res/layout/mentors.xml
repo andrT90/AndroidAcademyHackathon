@@ -1,25 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_gravity="center_horizontal"
     android:background="@color/white"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:ignore="MissingDefaultResource">
 
     <include
-        layout="@layout/toolbar_layout"
-        android:id="@+id/toolbar" />
+        android:id="@+id/toolbar"
+        layout="@layout/toolbar_layout" />
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/mentors_recycler"
-        android:padding="@dimen/dimen_8dp"
-        android:clipToPadding="false"
-        tools:listItem="@layout/mentors_list_item"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:clipToPadding="false"
+        android:padding="@dimen/dimen_8dp"
+        app:layoutManager="android.support.v7.widget.GridLayoutManager"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        app:spanCount="3"
+        tools:listItem="@layout/mentors_list_item"
+        tools:listitem="@layout/mentors_list_item">
 
 
     </android.support.v7.widget.RecyclerView>
-</FrameLayout>
+</android.support.design.widget.CoordinatorLayout>

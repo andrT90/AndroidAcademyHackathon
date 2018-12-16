@@ -7,22 +7,24 @@
         android:icon="@drawable/tab_events_selected"
         android:title="@string/bottom_lectures"
         app:showAsAction="ifRoom" />
-    <item
-        android:id="@+id/mentors"
-        android:enabled="true"
-        android:icon="@drawable/android"
-        android:title="@string/bottom_mentors"
-        app:showAsAction="ifRoom" />
+
     <item
         android:id="@+id/vacancies"
         android:enabled="true"
-        android:icon="@drawable/android"
+        android:icon="@drawable/tab_vacancies"
         android:title="@string/bottom_vacancies"
+        app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/mentors"
+        android:enabled="true"
+        android:icon="@drawable/tab_mentors"
+        android:title="@string/bottom_mentors"
         app:showAsAction="ifRoom" />
     <item
         android:id="@+id/profile"
         android:enabled="true"
-        android:icon="@drawable/android"
+        android:icon="@drawable/tab_profile"
         android:title="@string/bottom_profile"
         app:showAsAction="ifRoom" />
 </menu>

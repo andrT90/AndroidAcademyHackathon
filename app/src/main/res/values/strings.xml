@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">hackathon</string>
 
-    <string name="bottom_lectures">Лекции</string>
+    <string name="bottom_lectures">Расписание</string>
     <string name="bottom_mentors">Менторы</string>
     <string name="bottom_vacancies">Вакансии</string>
     <string name="bottom_profile">Профиль</string>
@@ -14,4 +14,13 @@
     <string name="event_list_title">Расписание</string>
     <string name="event_list_registered">Зарегистрирован</string>
     <string name="event_list_check_in">Посетил</string>
+
+    <!--Mentors-->
+    <string name="mentors_title">Менторы</string>
+
+    <!--Mentors-->
+    <string name="vacancies_title">Вакансии</string>
+
+    <!--Profile-->
+    <string name="profile_title">Профиль</string>
 </resources>

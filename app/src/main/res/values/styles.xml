@@ -18,6 +18,8 @@
     </style>
 
     <style name="Toolbar.WithoutBack">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">?attr/actionBarSize</item>
         <item name="navigationIcon">@null</item>
     </style>
 
