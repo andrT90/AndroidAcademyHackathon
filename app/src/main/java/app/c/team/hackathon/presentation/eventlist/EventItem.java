@@ -18,4 +18,23 @@ public class EventItem {
         this.isFirst = isFirst;
     }
 
+    public Event getItem() {
+        return item;
+    }
+
+    public boolean isLast() {
+        return isLast;
+    }
+
+    public boolean isFirst() {
+        return isFirst;
+    }
+
+    public boolean isRegistred() {
+        return item.isRegistered();
+    }
+
+    public boolean isVisited() {
+        return item.isVisited();
+    }
 }

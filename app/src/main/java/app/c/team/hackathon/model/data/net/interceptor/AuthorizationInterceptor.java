@@ -25,7 +25,7 @@ public class AuthorizationInterceptor implements Interceptor {
         Request original = chain.request();
         Request.Builder builder = original.newBuilder();
         String token = preferences.getToken();
-        if (TextUtil.isNotEmpty(token)) builder.addHeader("Authorization", "Bearer " + token);
+        if (TextUtil.isNotEmpty(token)) builder.addHeader("X-AUTH-TOKEN", token);
 
         return chain.proceed(builder.build());
     }

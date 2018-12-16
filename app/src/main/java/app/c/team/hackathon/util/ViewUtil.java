@@ -1,5 +1,6 @@
 package app.c.team.hackathon.util;
 
+import android.support.annotation.DrawableRes;
 import android.content.ClipData;
 import android.content.ClipboardManager;
 import android.content.Context;
@@ -8,6 +9,7 @@ import android.support.annotation.NonNull;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 import android.widget.ImageView;
 
 import com.squareup.picasso.Picasso;
@@ -35,6 +37,10 @@ public class ViewUtil {
 
     public static void loadImage(ImageView portrait, String imageUrl) {
         Picasso.get().load(imageUrl).into(portrait);
+    }
+
+    public static void setLeftDrawble(@NonNull TextView textView, @DrawableRes int id) {
+        textView.setCompoundDrawablesRelativeWithIntrinsicBounds(id, 0, 0, 0);
     }
 
     public static void copyToBuffer(Context context, String s) {

@@ -206,4 +206,8 @@ public class User implements Parcelable {
     @SerializedName("homeWorks")
     private List<HomeWorks> homeWorks;
 
+    public String getFullName() {
+        return name + " " + surname;
+    }
+
 }

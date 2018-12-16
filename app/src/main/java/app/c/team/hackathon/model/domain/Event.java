@@ -39,6 +39,9 @@ public class Event implements Parcelable {
     @SerializedName("notes")
     private List<String> notes;
 
+    @SerializedName("ticket")
+    private EventTicket eventTicket;
+
     protected Event(Parcel in) {
         id = in.readInt();
         title = in.readString();
@@ -50,6 +53,7 @@ public class Event implements Parcelable {
         resources_links = in.createTypedArrayList(ResourceLink.CREATOR);
         location = in.readParcelable(Location.class.getClassLoader());
         notes = in.createStringArrayList();
+        eventTicket = in.readParcelable(EventTicket.class.getClassLoader());
     }
 
     @Override
@@ -64,6 +68,7 @@ public class Event implements Parcelable {
         dest.writeTypedList(resources_links);
         dest.writeParcelable(location, flags);
         dest.writeStringList(notes);
+        dest.writeParcelable(eventTicket, flags);
     }
 
     @Override
@@ -213,6 +218,22 @@ public class Event implements Parcelable {
 
     public void setNotes(List<String> notes) {
         this.notes = notes;
+    }
+
+    public EventTicket getEventTicket() {
+        return eventTicket;
+    }
+
+    public void setEventTicket(EventTicket eventTicket) {
+        this.eventTicket = eventTicket;
+    }
+
+    public boolean isRegistered() {
+        return eventTicket != null;
+    }
+
+    public boolean isVisited() {
+        return eventTicket != null && eventTicket.isVisited();
     }
 
 }

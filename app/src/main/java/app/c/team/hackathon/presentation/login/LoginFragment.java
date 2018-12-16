@@ -1,5 +1,6 @@
 package app.c.team.hackathon.presentation.login;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -60,6 +61,12 @@ public class LoginFragment extends BaseFragment implements BackButtonListener, L
         LoginFragment fragment = new LoginFragment();
         fragment.setArguments(args);
         return fragment;
+    }
+
+    @Override
+    public void onAttach(Context context) {
+        ComponentsHolder.getInstance().appComponent().inject(this);
+        super.onAttach(context);
     }
 
     @Override

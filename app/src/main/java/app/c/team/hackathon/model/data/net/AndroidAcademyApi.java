@@ -17,7 +17,7 @@ public interface AndroidAcademyApi {
     @POST("auth")
     Single<BaseResponse<TokenResult>> login(@Query("email") String email);
 
-    @GET
+    @GET("events")
     Single<BaseResponse<List<Event>>> getEventList();
 
     @GET()//FIXME address

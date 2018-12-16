@@ -22,6 +22,7 @@ import app.c.team.hackathon.presentation.notes.EventNotesFragment;
 import butterknife.BindView;
 
 public class EventFragment extends BaseFragment implements BackButtonListener, EventView {
+    private static final String KEY_EVENT = "event";
 
     @InjectPresenter
     EventPresenter presenter;
@@ -44,8 +45,13 @@ public class EventFragment extends BaseFragment implements BackButtonListener, E
     }
 
 
-    public static Fragment getNewInstance() {
-        return new EventFragment();
+    public static EventFragment newInstance(Event event) {
+
+        Bundle args = new Bundle();
+        args.putParcelable(KEY_EVENT, event);
+        EventFragment fragment = new EventFragment();
+        fragment.setArguments(args);
+        return fragment;
     }
 
     @Override

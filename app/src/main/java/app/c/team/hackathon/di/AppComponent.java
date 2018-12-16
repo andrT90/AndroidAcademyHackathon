@@ -9,12 +9,14 @@ import app.c.team.hackathon.model.navigation.LocalNavigationModule;
 import app.c.team.hackathon.presentation.base.TabContainerFragment;
 import app.c.team.hackathon.presentation.bottom.BottomNavActivity;
 import app.c.team.hackathon.presentation.event.EventPresenter;
+import app.c.team.hackathon.presentation.eventlist.EventListPresenter;
 import app.c.team.hackathon.presentation.info.EventInfoPresenter;
 import app.c.team.hackathon.presentation.links.EventLinksPresenter;
-import app.c.team.hackathon.presentation.mentors.MentorListPresenter;
-import app.c.team.hackathon.presentation.notes.EventNotesPresenter;
+import app.c.team.hackathon.presentation.login.LoginActivity;
 import app.c.team.hackathon.presentation.login.LoginFragment;
 import app.c.team.hackathon.presentation.login.LoginPresenter;
+import app.c.team.hackathon.presentation.mentors.MentorListPresenter;
+import app.c.team.hackathon.presentation.notes.EventNotesPresenter;
 import dagger.Component;
 
 @Component(modules = {
@@ -37,6 +39,10 @@ public interface AppComponent {
     void inject(EventLinksPresenter eventLinksPresenter);
 
     void inject(EventNotesPresenter eventNotesPresenter);
+
+    void inject(LoginActivity loginActivity);
+
+    void inject(EventListPresenter eventListPresenter);
 
     void inject(MentorListPresenter mentorListPresenter);
 }

@@ -2,11 +2,10 @@ package app.c.team.hackathon.presentation.bottom;
 
 import android.os.Bundle;
 import android.support.annotation.IdRes;
-import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
-import android.view.MenuItem;
+import android.support.v4.app.FragmentTransaction;
 
 import com.arellomobile.mvp.MvpAppCompatActivity;
 import com.arellomobile.mvp.presenter.InjectPresenter;
@@ -18,12 +17,12 @@ import app.c.team.hackathon.R;
 import app.c.team.hackathon.di.ComponentsHolder;
 import app.c.team.hackathon.model.navigation.HackathonNavigator;
 import app.c.team.hackathon.presentation.base.BackButtonListener;
+import app.c.team.hackathon.presentation.base.TabContainerFragment;
 import app.c.team.hackathon.view.MessageDelegate;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import ru.terrakok.cicerone.NavigatorHolder;
 import ru.terrakok.cicerone.Router;
-import ru.terrakok.cicerone.Screen;
 
 public class BottomNavActivity extends MvpAppCompatActivity implements BottomNavView {
 
@@ -48,6 +47,11 @@ public class BottomNavActivity extends MvpAppCompatActivity implements BottomNav
     @BindView(R.id.bottom_nav_view)
     protected BottomNavigationView bottomNavView;
 
+    private Fragment eventsTab = TabContainerFragment.newInstance(TabContainerFragment.EVENTS);
+    private Fragment vacanciesTab = TabContainerFragment.newInstance(TabContainerFragment.VACANCIES);
+    private Fragment mentorsTab = TabContainerFragment.newInstance(TabContainerFragment.MENTORS);
+    private Fragment profileTab = TabContainerFragment.newInstance(TabContainerFragment.PROFILE);
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         ComponentsHolder.getInstance().appComponent().inject(this);
@@ -64,16 +68,22 @@ public class BottomNavActivity extends MvpAppCompatActivity implements BottomNav
         bottomNavView.setOnNavigationItemSelectedListener(menuItem -> {
             switch (menuItem.getItemId()) {
                 case R.id.lectures:
+                    selectTab(TabContainerFragment.EVENTS);
                     return true;
                 case R.id.mentors:
+                    selectTab(TabContainerFragment.MENTORS);
                     return true;
                 case R.id.vacancies:
+                    selectTab(TabContainerFragment.VACANCIES);
                     return true;
                 case R.id.profile:
+                    selectTab(TabContainerFragment.PROFILE);
                     return true;
             }
             return false;
         });
+
+        if (savedInstanceState == null) selectTab(TabContainerFragment.EVENTS);
     }
 
     @Override
@@ -102,8 +112,42 @@ public class BottomNavActivity extends MvpAppCompatActivity implements BottomNav
         } else presenter.backClicked();
     }
 
-    public void selectTab(Screen screen) {
+    private void selectTab(String screen) {
+        Fragment currentFragment = getCurrentFragment();
+        Fragment newFragment = getSupportFragmentManager().findFragmentByTag(screen);
+        if (newFragment != null && currentFragment == newFragment)
+            return;
+        FragmentTransaction transition = getSupportFragmentManager().beginTransaction();
 
+        if (newFragment == null)
+            transition.add(getContainerId(), getTabByScreenName(screen), screen);
+
+        if (currentFragment != null) {
+            transition.hide(currentFragment);
+            currentFragment.setUserVisibleHint(false);
+        }
+
+
+        if (newFragment != null) {
+            transition.show(newFragment);
+        }
+
+        transition.commitNow();
+
+    }
+
+    public Fragment getTabByScreenName(String screen) {
+        switch (screen) {
+            case TabContainerFragment.EVENTS:
+                return eventsTab;
+            case TabContainerFragment.VACANCIES:
+                return vacanciesTab;
+            case TabContainerFragment.MENTORS:
+                return mentorsTab;
+            case TabContainerFragment.PROFILE:
+                return profileTab;
+        }
+        return eventsTab;
     }
 
     @Nullable

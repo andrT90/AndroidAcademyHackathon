@@ -11,7 +11,7 @@ import app.c.team.hackathon.R;
 import app.c.team.hackathon.model.domain.Event;
 import app.c.team.hackathon.util.ViewUtil;
 
-public class EventListAdapterDelegate extends AbsListItemAdapterDelegate<Event, Object, EventViewHolder> {
+public class EventListAdapterDelegate extends AbsListItemAdapterDelegate<EventItem, Object, EventViewHolder> {
     private final EventListAdapter.Callback callback;
 
     public EventListAdapterDelegate(EventListAdapter.Callback callback) {
@@ -20,7 +20,7 @@ public class EventListAdapterDelegate extends AbsListItemAdapterDelegate<Event, 
 
     @Override
     protected boolean isForViewType(@NonNull Object item, @NonNull List<Object> items, int position) {
-        return item instanceof Event;
+        return item instanceof EventItem;
     }
 
     @NonNull
@@ -30,7 +30,7 @@ public class EventListAdapterDelegate extends AbsListItemAdapterDelegate<Event, 
     }
 
     @Override
-    protected void onBindViewHolder(@NonNull Event item, @NonNull EventViewHolder holder, @NonNull List<Object> payloads) {
+    protected void onBindViewHolder(@NonNull EventItem item, @NonNull EventViewHolder holder, @NonNull List<Object> payloads) {
         holder.bind(item, callback);
     }
 }

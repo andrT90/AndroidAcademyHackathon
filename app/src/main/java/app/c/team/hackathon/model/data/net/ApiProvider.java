@@ -29,11 +29,12 @@ public class ApiProvider {
                 .map(BaseResponse::getData);
     }
 
-//    public Single<List<MentorItem>> loadMentorData() {
-//        return api
-//                .getMentorList()
-//                .map();
-//    }
+    /*public Single<List<MentorItem>> loadMentorData() {
+        return api
+                .getMentorList()
+                .map();
+    }*/
+
 
     public Single<Event> getEvent(int id) {
         return api
