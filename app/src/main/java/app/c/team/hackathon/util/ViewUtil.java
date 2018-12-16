@@ -5,6 +5,9 @@ import android.support.annotation.NonNull;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+
+import com.squareup.picasso.Picasso;
 
 public class ViewUtil {
     private ViewUtil() {
@@ -25,5 +28,9 @@ public class ViewUtil {
 
     public static View inflate(@NonNull ViewGroup parent, @LayoutRes int id) {
         return LayoutInflater.from(parent.getContext()).inflate(id, parent, false);
+    }
+
+    public static void loadImage(ImageView portrait, String imageUrl) {
+        Picasso.get().load(imageUrl).into(portrait);
     }
 }

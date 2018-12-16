@@ -6,6 +6,7 @@ import android.widget.TextView;
 
 import app.c.team.hackathon.R;
 import app.c.team.hackathon.presentation.base.BaseViewHolder;
+import app.c.team.hackathon.util.ViewUtil;
 import butterknife.BindView;
 
 public class MentorViewHolder extends BaseViewHolder {
@@ -25,6 +26,7 @@ public class MentorViewHolder extends BaseViewHolder {
         this.mentorItem = item;
         this.callback = callback;
         //TODO Set portrait
+        ViewUtil.loadImage(portrait, item.getImageUrl());
         name.setText(item.getName());
         job.setText(item.getJob());
     }
