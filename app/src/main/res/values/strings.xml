@@ -23,4 +23,7 @@
 
     <!--Profile-->
     <string name="profile_title">Профиль</string>
+    <string name="profile_word_1">«Да пребудет\nс тобой сила»Да пребудет\nс тобой сила»</string>
+    <string name="profile_word_2">«Ученик успешный\nнадежды учителя воплощает»</string>
+    <string name="profile_word_3">«Ты хорошо обучен,\nмой юный ученик»</string>
 </resources>

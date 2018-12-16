@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fillViewport="true">
@@ -9,17 +11,98 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <include layout="@layout/toolbar_layout"/>
+        <include layout="@layout/toolbar_layout" />
 
         <de.hdodenhof.circleimageview.CircleImageView
-            xmlns:app="http://schemas.android.com/apk/res-auto"
             android:id="@+id/profile_image"
             android:layout_width="69dp"
             android:layout_height="69dp"
-            app:civ_border_width="@dimen/dimen_2dp"
             android:layout_gravity="center_horizontal"
-            app:civ_border_color="@color/black"/>
+            android:layout_marginTop="@dimen/dimen_24dp"
+            android:src="@drawable/user_mock"
+            app:civ_border_color="@color/black"
+            app:civ_border_width="@dimen/dimen_2dp"
+            />
 
+        <TextView
+            android:id="@+id/user"
+            style="@style/Text.Regular"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dimen_8dp"
+            android:gravity="center"
+            android:textColor="@color/blackTransparent"
+            android:textSize="@dimen/text_size_16sp"
+            tools:text="Леха Чеботаря" />
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/dimen_24dp"
+            android:background="@color/greenLight"
+            android:orientation="vertical"
+            android:paddingBottom="@dimen/dimen_24dp"
+            android:paddingTop="@dimen/dimen_24dp">
+
+            <TextView
+                android:id="@+id/mentor"
+                style="@style/Text.Bold"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Ментор"
+                android:textSize="@dimen/text_size_16sp"
+                />
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/mentor_image"
+                android:layout_width="69dp"
+                android:layout_height="69dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="@dimen/dimen_24dp"
+                android:src="@drawable/mentor_mock"
+                app:civ_border_color="@color/black"
+                app:civ_border_width="@dimen/dimen_2dp"
+                />
+
+            <TextView
+                android:id="@+id/mentor_name"
+                style="@style/Text.Regular"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Алексей Быков"
+                android:textSize="@dimen/text_size_16sp"
+                />
+
+            <TextView
+                android:id="@+id/slack"
+                style="@style/Text.Regular"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:background="@drawable/shape_button_outline_gray"
+                android:clickable="true"
+                android:focusable="true"
+                android:gravity="center"
+                android:paddingBottom="@dimen/dimen_8dp"
+                android:paddingLeft="@dimen/dimen_16dp"
+                android:paddingRight="@dimen/dimen_16dp"
+                android:paddingTop="@dimen/dimen_8dp"
+                android:text="\@ALEX.BIKOV"
+                android:textSize="@dimen/text_size_16sp"
+                />
+        </LinearLayout>
+        
+        <TextView
+            android:id="@+id/words"
+            style="@style/Text.Bold"
+            android:textColor="@color/black"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:text="«Да пребудет\nс тобой сила»"/>
     </LinearLayout>
 
 </ScrollView>
