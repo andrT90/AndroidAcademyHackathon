@@ -107,7 +107,7 @@ public class EventFragment extends BaseFragment implements BackButtonListener, E
                 case 0:
                     return EventInfoFragment.newInstance(event);
                 case 1:
-                    return EventLinksFragment.newInstance();
+                    return EventLinksFragment.newInstance(event.getId());
                 case 2:
                     return EventNotesFragment.newInstance();
                 default:
