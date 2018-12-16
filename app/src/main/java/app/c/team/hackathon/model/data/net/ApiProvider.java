@@ -1,7 +1,10 @@
 package app.c.team.hackathon.model.data.net;
 
+import java.util.List;
+
 import javax.inject.Inject;
 
+import app.c.team.hackathon.model.domain.Event;
 import io.reactivex.Single;
 
 public class ApiProvider {
@@ -12,7 +15,15 @@ public class ApiProvider {
         this.api = api;
     }
 
-    public Single<TokenResult> login(String email){
-        return api.login(email).map(BaseResponse::getData);
+    public Single<TokenResult> login(String email) {
+        return api
+                .login(email)
+                .map(BaseResponse::getData);
+    }
+
+    public Single<List<Event>> getEventList() {
+        return api
+                .getEventList()
+                .map(BaseResponse::getData);
     }
 }
